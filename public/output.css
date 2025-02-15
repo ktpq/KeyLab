@@ -881,6 +881,9 @@
   .grow {
     flex-grow: 1;
   }
+  .grow\! {
+    flex-grow: 1 !important;
+  }
   .basis-auto {
     flex-basis: auto;
   }
@@ -2419,7 +2422,7 @@
     background-color: #3C3D37;
   }
   .agar {
-    background-image: url(/public/image/key.jpg);
+    background-image: url(/image/key.jpg);
     background-size: cover;
   }
 }
