@@ -848,14 +848,14 @@
   .w-44 {
     width: calc(var(--spacing) * 44);
   }
+  .w-\[8vw\] {
+    width: 8vw;
+  }
   .w-\[30px\] {
     width: 30px;
   }
   .w-\[80\%\] {
     width: 80%;
-  }
-  .w-\[8vw\] {
-    width: 8vw;
   }
   .w-screen {
     width: 100vw;
@@ -2388,6 +2388,21 @@
   .max-lg\:text-\[2\.5vw\] {
     @media (width < 64rem) {
       font-size: 2.5vw;
+    }
+  }
+  .sm\:grid {
+    @media (width >= 40rem) {
+      display: grid;
+    }
+  }
+  .sm\:grid-cols-1 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   .lg\:hidden {
