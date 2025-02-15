@@ -1,2 +1,11 @@
 /* npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch */
 @import "tailwindcss";
+
+@layer components{
+    .bg-primary{
+        background-color: #202020;
+    }
+    .bg-secondary{
+        background-color: #3C3D37;
+    }
+}
