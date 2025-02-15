@@ -839,14 +839,14 @@
   .w-44 {
     width: calc(var(--spacing) * 44);
   }
-  .w-\[8vw\] {
-    width: 8vw;
-  }
   .w-\[30px\] {
     width: 30px;
   }
   .w-\[80\%\] {
     width: 80%;
+  }
+  .w-\[8vw\] {
+    width: 8vw;
   }
   .w-screen {
     width: 100vw;
@@ -1258,6 +1258,9 @@
   }
   .justify-items-stretch {
     justify-items: stretch;
+  }
+  .gap-x-32 {
+    column-gap: calc(var(--spacing) * 32);
   }
   .space-y-reverse {
     :where(& > :not(:last-child)) {
@@ -1848,9 +1851,6 @@
   .\[color\:red\]\/50\! {
     color: color-mix(in oklab, red 50%, transparent) !important;
   }
-  .text-black {
-    color: var(--color-black);
-  }
   .text-gray-700 {
     color: var(--color-gray-700);
   }
@@ -2372,21 +2372,6 @@
       font-size: 2.5vw;
     }
   }
-  .sm\:grid {
-    @media (width >= 40rem) {
-      display: grid;
-    }
-  }
-  .sm\:grid-cols-1 {
-    @media (width >= 40rem) {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-  }
-  .md\:grid-cols-2 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
   .lg\:hidden {
     @media (width >= 64rem) {
       display: none;
@@ -2436,8 +2421,57 @@
   .bg-secondary {
     background-color: #3C3D37;
   }
-  .agar {
-    background-image: url(/image/key.jpg);
+  .wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  .wrap2 {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  .img-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+    filter: brightness(0.95);
+    z-index: -1;
+  }
+  .img-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+    filter: brightness(0.95);
+    z-index: -1;
+  }
+  .wrap:hover .img-1 {
+    transform: scale(1.2);
+    filter: brightness(1.05);
+  }
+  .wrap2:hover .img-2 {
+    transform: scale(1.1);
+    filter: brightness(1.05);
+  }
+  .pop {
+    transition: 0.5s;
+  }
+  .wrap:hover .pop {
+    transform: translateY(375px);
+  }
+  .wrap2:hover .pop {
+    transform: translateY(375px);
+  }
+  .manta {
+    background-image: url(/image/manta.jpg);
     background-size: cover;
   }
 }
