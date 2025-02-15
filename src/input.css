@@ -8,4 +8,9 @@
     .bg-secondary{
         background-color: #3C3D37;
     }
+    .agar{
+        background-image: url(/public/image/key.jpg);
+        background-size: cover;
+
+    }
 }
