@@ -1,7 +1,7 @@
-/* npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch */
+/* npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --watch */
 @import "tailwindcss";
 
-@layer components{
+@layer utilities{
     .bg-primary{
         background-color: #202020;
     }
