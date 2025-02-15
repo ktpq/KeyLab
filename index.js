@@ -15,6 +15,10 @@ app.get('/', function(req, res){
     res.render('app')
 })
 
+app.get('/login', function(req, res){
+    res.render('login')
+})
+
 // Starting the server
 app.listen(port, () => {
    console.log("Server started.");

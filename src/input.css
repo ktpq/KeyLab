@@ -1,4 +1,11 @@
 /* npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --watch */
+
+/* คำสั่งด้านล่างนี้ไว้รัน node พร้อมกับ tailwind ในกรณีที่ tailwind ทำงานแปลกๆ */
+
+/*  ลงอันนี้ก่อน -> npm install concurrently --save-dev */
+/* npx concurrently "npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --watch" "nodemon index.js" */
+
+
 @import "tailwindcss";
 
 @layer utilities{
