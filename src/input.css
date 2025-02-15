@@ -1,2 +1,15 @@
-/* npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch */
+/* npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --watch */
 @import "tailwindcss";
+
+@layer utilities{
+    .bg-primary{
+        background-color: #202020;
+    }
+    .bg-secondary{
+        background-color: #3C3D37;
+    }
+    .agar{
+        background-image: url(/image/key.jpg);
+        background-size: cover;
+    }
+}
