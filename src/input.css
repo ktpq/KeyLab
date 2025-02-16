@@ -18,6 +18,11 @@
         overflow: hidden;
         border-radius: 15px;
     }
+    .wrap3{
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+    }
     .img-1{
         position: absolute;
         top: 0;
@@ -64,5 +69,36 @@
         background-size: cover;        
 
     }
-    
+    .img-front{
+        position: absolute;
+        height: 75%;
+        width: 75%;
+        object-fit: cover;
+        filter: brightness(0.9);
+        transition: 0.5s ease-in-out;
+        border-radius: 15px;
+    }
+    .img-back{
+        position: absolute;
+        height: 75%;
+        width: 75%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+    .wrap3:hover .img-front {
+        opacity: 0;
+    }
+    .bg-gif{
+        height: 85vh;
+        position: relative;
+        background-image: url(/image/gif-background.gif);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .bg-overlay{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(10, 10, 10, 0.3);
+    }
 }

@@ -815,6 +815,9 @@
   .h-\[40px\] {
     height: 40px;
   }
+  .h-\[375px\] {
+    height: 375px;
+  }
   .h-\[450px\] {
     height: 450px;
   }
@@ -1100,8 +1103,8 @@
   .auto-rows-min {
     grid-auto-rows: min-content;
   }
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .grid-cols-none {
     grid-template-columns: none;
@@ -1259,6 +1262,9 @@
   .justify-items-stretch {
     justify-items: stretch;
   }
+  .gap-15 {
+    gap: calc(var(--spacing) * 15);
+  }
   .gap-x-32 {
     column-gap: calc(var(--spacing) * 32);
   }
@@ -1266,6 +1272,9 @@
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 1;
     }
+  }
+  .gap-y-24 {
+    row-gap: calc(var(--spacing) * 24);
   }
   .space-x-reverse {
     :where(& > :not(:last-child)) {
@@ -1668,6 +1677,9 @@
   .p-1 {
     padding: calc(var(--spacing) * 1);
   }
+  .p-15 {
+    padding: calc(var(--spacing) * 15);
+  }
   .p-20 {
     padding: calc(var(--spacing) * 20);
   }
@@ -1695,14 +1707,14 @@
   .py-7 {
     padding-block: calc(var(--spacing) * 7);
   }
-  .pr-20 {
-    padding-right: calc(var(--spacing) * 20);
+  .pr-15 {
+    padding-right: calc(var(--spacing) * 15);
   }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
   }
-  .pl-20 {
-    padding-left: calc(var(--spacing) * 20);
+  .pl-15 {
+    padding-left: calc(var(--spacing) * 15);
   }
   .text-center {
     text-align: center;
@@ -1749,6 +1761,10 @@
   .text-3xl {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading, var(--text-5xl--line-height));
   }
   .text-6xl {
     font-size: var(--text-6xl);
@@ -2372,6 +2388,16 @@
       font-size: 2.5vw;
     }
   }
+  .sm\:grid-cols-1 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   .lg\:hidden {
     @media (width >= 64rem) {
       display: none;
@@ -2431,6 +2457,11 @@
     overflow: hidden;
     border-radius: 15px;
   }
+  .wrap3 {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
   .img-1 {
     position: absolute;
     top: 0;
@@ -2473,6 +2504,38 @@
   .manta {
     background-image: url(/image/manta.jpg);
     background-size: cover;
+  }
+  .img-front {
+    position: absolute;
+    height: 75%;
+    width: 75%;
+    object-fit: cover;
+    filter: brightness(0.9);
+    transition: 0.5s ease-in-out;
+    border-radius: 15px;
+  }
+  .img-back {
+    position: absolute;
+    height: 75%;
+    width: 75%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  .wrap3:hover .img-front {
+    opacity: 0;
+  }
+  .bg-gif {
+    height: 85vh;
+    position: relative;
+    background-image: url(/image/gif-background.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .bg-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.3);
   }
 }
 @keyframes spin {
