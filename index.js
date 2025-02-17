@@ -1,21 +1,23 @@
 const express = require("express");
-const path = require("path");
+const app = express();
 const port = 3000;
 
-const app = express();
+const userRouter = require('./routes/auth')
+const pageRouter = require('./routes/page')
 
 
-// static resourse & templating engine
+// ใช้ส่ง form ผ่าน method post
+app.use(express.urlencoded({ extended: true }));
+
+// static resources & templating engine
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-
-// routing path
-app.get('/', function(req, res){
-    res.render('app')
-})
+// use Router section
+app.use(userRouter)
+app.use(pageRouter)
 
 // Starting the server
 app.listen(port, () => {
-   console.log("Server started.");
- });
+   console.log(`Server started at http://localhost:${port}`);
+});

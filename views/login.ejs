@@ -1,0 +1,13 @@
+<%- include('partials/headHtml')%>
+
+<body class="bg-primary flex justify-center items-center min-h-screen">
+    <form action="/verifycode" class="text white w-[500px] text-white mx-auto p-8 bg-secondary max-sm:w-full shadow-lg my-auto" method="post">
+        <h1 class="font-extrabold text-3xl text-center mb-12"> - KEYLAB - </h1>
+        <h2 class="font-bold my-3 text-xl"> เข้าสู่ระบบ </h2>
+        <p class=" my-3 text-md max-sm:text-[12px]"> กรอกอีเมล์ของคุณแล้วเราจะส่งรหัสเข้าระบบให้คุณ </p>
+        <input type="email" class="w-full bg-primary my-3 text-md border-none" placeholder="ใส่อีเมล์ของคุณ" name="email">
+        <button class="w-full py-3 bg-primary text-white my-3 font-bold shadow-lg"> ดำเนินการต่อ </button>
+    </form>
+</body>
+
+<%- include('partials/footHtml')%>
