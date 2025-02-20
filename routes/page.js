@@ -7,8 +7,12 @@ router.get('/', function(req, res){
     res.render('app');
 });
 
-router.get('/login', function(req, res){
-    res.render('login');
+router.get('/sendemail', function(req, res){
+    res.render('sendEmail');
+});
+
+router.get('/enterCode', function(req, res){
+    res.render('enterCode');
 });
 
 module.exports = router
