@@ -38,7 +38,7 @@ router.post('/verifycode', function(req, res){
             })
         }
     })
-    res.redirect('/login');
+    res.redirect('/enterCode');
 });
 
 module.exports = router
