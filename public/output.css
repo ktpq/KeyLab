@@ -590,11 +590,11 @@
   .isolation-auto {
     isolation: auto;
   }
+  .z-0 {
+    z-index: 0;
+  }
   .z-10 {
     z-index: 10;
-  }
-  .z-20 {
-    z-index: 20;
   }
   .z-auto {
     z-index: auto;
@@ -722,6 +722,9 @@
   .ms-65 {
     margin-inline-start: calc(var(--spacing) * 65);
   }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
@@ -833,8 +836,8 @@
   .h-\[40px\] {
     height: 40px;
   }
-  .h-\[375px\] {
-    height: 375px;
+  .h-\[420px\] {
+    height: 420px;
   }
   .h-\[450px\] {
     height: 450px;
@@ -865,9 +868,6 @@
   }
   .w-\[30px\] {
     width: 30px;
-  }
-  .w-\[80\%\] {
-    width: 80%;
   }
   .w-\[500px\] {
     width: 500px;
@@ -1126,9 +1126,6 @@
   }
   .auto-rows-min {
     grid-auto-rows: min-content;
-  }
-  .grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .grid-cols-none {
     grid-template-columns: none;
@@ -1520,9 +1517,6 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
@@ -1703,6 +1697,9 @@
   }
   .p-8 {
     padding: calc(var(--spacing) * 8);
+  }
+  .p-10 {
+    padding: calc(var(--spacing) * 10);
   }
   .p-15 {
     padding: calc(var(--spacing) * 15);
@@ -2454,6 +2451,11 @@
       display: none;
     }
   }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
   .lg\:text-xl {
     @media (width >= 64rem) {
       font-size: var(--text-xl);
@@ -2558,8 +2560,8 @@
   }
   .img-front {
     position: absolute;
-    height: 75%;
-    width: 75%;
+    height: 70%;
+    width: 70%;
     object-fit: cover;
     filter: brightness(0.9);
     transition: 0.5s ease-in-out;
@@ -2567,8 +2569,8 @@
   }
   .img-back {
     position: absolute;
-    height: 75%;
-    width: 75%;
+    height: 70%;
+    width: 70%;
     object-fit: cover;
     border-radius: 15px;
   }
@@ -2586,7 +2588,24 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(10, 10, 10, 0.3);
+    background-color: rgba(70, 17, 17, 0.4);
+    color: white;
+  }
+  .text-des {
+    font-size: 15px;
+  }
+  .text-bold {
+    font-weight: 700;
+  }
+  .text-brand {
+    font-family: "Monomakh", serif;
+  }
+  #bg-gif1 {
+    height: 60vh;
+    position: relative;
+    background-image: url(/image/gif-background2.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 @keyframes spin {
