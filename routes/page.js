@@ -7,8 +7,8 @@ router.get('/', function(req, res){
     res.render('app');
 });
 
-router.get('/sendemail', function(req, res){
-    res.render('sendEmail');
+router.get('/enterEmail', function(req, res){
+    res.render('enterEmail');
 });
 
 router.get('/enterCode', function(req, res){

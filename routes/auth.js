@@ -5,7 +5,7 @@ const router = express.Router()
 const nodemailer = require('nodemailer')
 
 
-router.post('/verifycode', function(req, res){
+router.post('/sendcode', function(req, res){
     const email = req.body.email;
     const verifyCode = Math.floor(100000 + Math.random() * 900000);
     const transporter = nodemailer.createTransport({
@@ -32,13 +32,10 @@ router.post('/verifycode', function(req, res){
             })
         } else {
             console.log('Send: ' + info.response)
-            return res.status(200).json({
-                RespCode: 200,
-                RespMessage: 'good'
-            })
+            return res.redirect('/enterCode');
         }
     })
-    res.redirect('/enterCode');
+    
 });
 
 module.exports = router
