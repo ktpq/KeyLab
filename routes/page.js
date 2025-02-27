@@ -12,7 +12,7 @@ router.get('/enterEmail', function(req, res){
 });
 
 router.get('/enterCode', function(req, res){
-    res.render('enterCode');
+    res.render('enterCode', { email: req.session.email, password: req.session.password });
 });
 
 module.exports = router

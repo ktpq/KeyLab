@@ -31,6 +31,9 @@ router.post('/sendcode', function(req, res){
                 RespError: err
             })
         } else {
+            req.session.email = email
+            req.session.password = verifyCode
+            req.session.cookie.maxAge=30000
             console.log('Send: ' + info.response)
             return res.redirect('/enterCode');
         }
