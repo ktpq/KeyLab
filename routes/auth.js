@@ -40,5 +40,14 @@ router.post('/sendcode', function(req, res){
     })
     
 });
-
+router.post('/enterCode', function(req, res){
+    const code = req.body.code
+    const pass = req.session.password
+    if(code == pass){
+        console.log('login success')
+        return res.redirect('/');
+    }else{
+        res.status(401).send('Login failed! Invalid email or password.');
+    }
+})
 module.exports = router
