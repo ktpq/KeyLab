@@ -14,5 +14,8 @@ router.get('/sendemail', function(req, res){
 router.get('/enterCode', function(req, res){
     res.render('enterCode');
 });
+router.get('/buy', function(req, res){
+    res.render('buy');
+});
 
 module.exports = router

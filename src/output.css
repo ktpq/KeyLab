@@ -881,14 +881,14 @@
   .w-44 {
     width: calc(var(--spacing) * 44);
   }
-  .w-\[8vw\] {
-    width: 8vw;
-  }
   .w-\[30px\] {
     width: 30px;
   }
   .w-\[80\%\] {
     width: 80%;
+  }
+  .w-\[8vw\] {
+    width: 8vw;
   }
   .w-\[500px\] {
     width: 500px;
@@ -1147,9 +1147,6 @@
   }
   .auto-rows-min {
     grid-auto-rows: min-content;
-  }
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2642,9 +2639,10 @@
     background-repeat: no-repeat;
   }
   .btn-1 {
-    height: 70px;
-    width: 150px;
+    height: 35px;
+    width: 100px;
     background-color: #777777;
+    cursor: pointer;
   }
 }
 @keyframes spin {
