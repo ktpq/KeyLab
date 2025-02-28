@@ -746,6 +746,9 @@
   .mt-20 {
     margin-top: calc(var(--spacing) * 20);
   }
+  .mt-35 {
+    margin-top: calc(var(--spacing) * 35);
+  }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
   }
@@ -757,6 +760,9 @@
   }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
+  }
+  .mb-20 {
+    margin-bottom: calc(var(--spacing) * 20);
   }
   .box-border {
     box-sizing: border-box;
@@ -851,9 +857,6 @@
   .h-\[40px\] {
     height: 40px;
   }
-  .h-\[50vh\] {
-    height: 50vh;
-  }
   .h-\[420px\] {
     height: 420px;
   }
@@ -881,14 +884,14 @@
   .w-44 {
     width: calc(var(--spacing) * 44);
   }
-  .w-\[8vw\] {
-    width: 8vw;
-  }
   .w-\[30px\] {
     width: 30px;
   }
   .w-\[80\%\] {
     width: 80%;
+  }
+  .w-\[8vw\] {
+    width: 8vw;
   }
   .w-\[500px\] {
     width: 500px;
@@ -1147,9 +1150,6 @@
   }
   .auto-rows-min {
     grid-auto-rows: min-content;
-  }
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1764,11 +1764,17 @@
   .py-7 {
     padding-block: calc(var(--spacing) * 7);
   }
+  .pr-10 {
+    padding-right: calc(var(--spacing) * 10);
+  }
   .pr-15 {
     padding-right: calc(var(--spacing) * 15);
   }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
+  }
+  .pl-10 {
+    padding-left: calc(var(--spacing) * 10);
   }
   .pl-15 {
     padding-left: calc(var(--spacing) * 15);
@@ -2475,9 +2481,19 @@
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
   }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   .md\:grid-cols-2 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-4 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
   .lg\:hidden {
@@ -2642,9 +2658,28 @@
     background-repeat: no-repeat;
   }
   .btn-1 {
-    height: 70px;
-    width: 150px;
+    height: 42px;
+    width: 250px;
+    background-color: rgb(15, 15, 15);
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .mynav input {
+    display: none;
+  }
+  label {
+    font-family: sans-serif;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.3s;
     background-color: #777777;
+  }
+  .mynav label:last-of-type {
+    border-right: 0;
+  }
+  .mynav input:checked + label {
+    background: #becbff;
   }
 }
 @keyframes spin {
