@@ -5,7 +5,7 @@ const router = express.Router()
 const nodemailer = require('nodemailer')
 
 
-router.post('/verifycode', function(req, res){
+router.post('/sendcode', function(req, res){
     const email = req.body.email;
     const verifyCode = Math.floor(100000 + Math.random() * 900000);
     const transporter = nodemailer.createTransport({
@@ -31,14 +31,23 @@ router.post('/verifycode', function(req, res){
                 RespError: err
             })
         } else {
+            req.session.email = email
+            req.session.password = verifyCode
+            req.session.cookie.maxAge=30000
             console.log('Send: ' + info.response)
-            return res.status(200).json({
-                RespCode: 200,
-                RespMessage: 'good'
-            })
+            return res.redirect('/enterCode');
         }
     })
-    res.redirect('/enterCode');
+    
 });
-
+router.post('/enterCode', function(req, res){
+    const code = req.body.code
+    const pass = req.session.password
+    if(code == pass){
+        console.log('login success')
+        return res.redirect('/');
+    }else{
+        res.status(401).send('Login failed! Invalid email or password.');
+    }
+})
 module.exports = router

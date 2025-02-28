@@ -1,3 +1,15 @@
 <%- include('partials/headHtml')%>
-
+<body class="bg-primary flex justify-center items-center min-h-screen">
+    <form action="/enterCode" class="text white w-[500px] text-white mx-auto p-8 bg-secondary max-sm:w-full shadow-lg my-auto" method="post">
+        <h1 class="font-extrabold text-3xl text-center mb-12"> - KEYLAB - </h1>
+        <h2 class="font-bold my-3 text-xl"> ใส่รหัสยืนยันตัวตน </h2>
+        <p class=" my-3 text-md max-sm:text-[12px]"> รหัสถูกส่งไปที่ <%= email %> </p>
+        <input type="password" class="w-full bg-primary my-3 text-md border-none" placeholder="ใส่รหัส 6 หลัก" name="code">
+        <div class="flex justify-between my-1">
+            <a href="/enterEmail" class="underline"> เข้าสู่ระบบด้วยอีเมล์อื่น </a>
+            <a href="/sendcode" class="underline"> ส่งรหัสอีกครั้ง </a>
+        </div>
+        <button class="w-full py-3 bg-primary text-white my-3 font-bold shadow-lg"> เข้าสู่ระบบ </button>
+    </form>
+</body>
 <%- include('partials/footHtml')%>

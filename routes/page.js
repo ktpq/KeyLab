@@ -7,12 +7,19 @@ router.get('/', function(req, res){
     res.render('app');
 });
 
-router.get('/sendemail', function(req, res){
-    res.render('sendEmail');
+router.get('/enterEmail', function(req, res){
+    res.render('enterEmail');
 });
 
 router.get('/enterCode', function(req, res){
-    res.render('enterCode');
+    res.render('enterCode', { email: req.session.email, password: req.session.password });
 });
+router.get('/buy', function(req, res){
+    res.render('buy');
+});
+
+router.get('/products', function(req,res){
+    res.render('products')
+})
 
 module.exports = router

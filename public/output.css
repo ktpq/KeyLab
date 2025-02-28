@@ -593,9 +593,6 @@
   .z-10 {
     z-index: 10;
   }
-  .z-20 {
-    z-index: 20;
-  }
   .z-auto {
     z-index: auto;
   }
@@ -704,11 +701,26 @@
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
   }
+  .mx-8 {
+    margin-inline: calc(var(--spacing) * 8);
+  }
   .mx-auto {
     margin-inline: auto;
   }
+  .my-1 {
+    margin-block: calc(var(--spacing) * 1);
+  }
   .my-3 {
     margin-block: calc(var(--spacing) * 3);
+  }
+  .my-5 {
+    margin-block: calc(var(--spacing) * 5);
+  }
+  .my-8 {
+    margin-block: calc(var(--spacing) * 8);
+  }
+  .my-10 {
+    margin-block: calc(var(--spacing) * 10);
   }
   .my-auto {
     margin-block: auto;
@@ -719,8 +731,29 @@
   .ms-10 {
     margin-inline-start: calc(var(--spacing) * 10);
   }
+  .ms-25 {
+    margin-inline-start: calc(var(--spacing) * 25);
+  }
+  .ms-35 {
+    margin-inline-start: calc(var(--spacing) * 35);
+  }
   .ms-65 {
     margin-inline-start: calc(var(--spacing) * 65);
+  }
+  .me-3 {
+    margin-inline-end: calc(var(--spacing) * 3);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
   }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
@@ -833,8 +866,11 @@
   .h-\[40px\] {
     height: 40px;
   }
-  .h-\[375px\] {
-    height: 375px;
+  .h-\[50vh\] {
+    height: 50vh;
+  }
+  .h-\[420px\] {
+    height: 420px;
   }
   .h-\[450px\] {
     height: 450px;
@@ -862,6 +898,9 @@
   }
   .w-\[8vw\] {
     width: 8vw;
+  }
+  .w-\[11\%\] {
+    width: 11%;
   }
   .w-\[30px\] {
     width: 30px;
@@ -1127,8 +1166,8 @@
   .auto-rows-min {
     grid-auto-rows: min-content;
   }
-  .grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .grid-cols-none {
     grid-template-columns: none;
@@ -1286,6 +1325,9 @@
   .justify-items-stretch {
     justify-items: stretch;
   }
+  .gap-7 {
+    gap: calc(var(--spacing) * 7);
+  }
   .gap-15 {
     gap: calc(var(--spacing) * 15);
   }
@@ -1396,6 +1438,9 @@
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
   }
   .rounded-s {
     border-start-start-radius: 0.25rem;
@@ -1519,9 +1564,6 @@
   }
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
-  }
-  .bg-black {
-    background-color: var(--color-black);
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
@@ -1704,6 +1746,9 @@
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
+  .p-10 {
+    padding: calc(var(--spacing) * 10);
+  }
   .p-15 {
     padding: calc(var(--spacing) * 15);
   }
@@ -1718,6 +1763,9 @@
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
+  }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
   }
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
@@ -1787,6 +1835,10 @@
   }
   .align-top {
     vertical-align: top;
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
   .text-3xl {
     font-size: var(--text-3xl);
@@ -2454,6 +2506,11 @@
       display: none;
     }
   }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
   .lg\:text-xl {
     @media (width >= 64rem) {
       font-size: var(--text-xl);
@@ -2496,7 +2553,7 @@
     background-color: #202020;
   }
   .bg-secondary {
-    background-color: #3C3D37;
+    background-color: #777777;
   }
   .wrap {
     position: relative;
@@ -2558,8 +2615,8 @@
   }
   .img-front {
     position: absolute;
-    height: 75%;
-    width: 75%;
+    height: 70%;
+    width: 70%;
     object-fit: cover;
     filter: brightness(0.9);
     transition: 0.5s ease-in-out;
@@ -2567,8 +2624,8 @@
   }
   .img-back {
     position: absolute;
-    height: 75%;
-    width: 75%;
+    height: 70%;
+    width: 70%;
     object-fit: cover;
     border-radius: 15px;
   }
@@ -2586,7 +2643,30 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(10, 10, 10, 0.3);
+    background-color: rgba(12, 1, 1, 0.4);
+    color: white;
+  }
+  .text-des {
+    font-size: 15px;
+  }
+  .text-bold {
+    font-weight: 700;
+  }
+  .text-brand {
+    font-family: "Monomakh", serif;
+  }
+  #bg-gif1 {
+    height: 65vh;
+    position: relative;
+    background-image: url(/image/gif-background2.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .btn-1 {
+    height: 35px;
+    width: 100px;
+    background-color: #777777;
+    cursor: pointer;
   }
 }
 @keyframes spin {
