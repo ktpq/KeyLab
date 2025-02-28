@@ -13,7 +13,7 @@
         background-color: #202020;
     }
     .bg-secondary{
-        background-color: #3C3D37;
+        background-color: #777777;
     }
     .wrap{
         position: relative;
@@ -78,8 +78,8 @@
     }
     .img-front{
         position: absolute;
-        height: 75%;
-        width: 75%;
+        height: 70%;
+        width: 70%;
         object-fit: cover;
         filter: brightness(0.9);
         transition: 0.5s ease-in-out;
@@ -87,8 +87,8 @@
     }
     .img-back{
         position: absolute;
-        height: 75%;
-        width: 75%;
+        height: 70%;
+        width: 70%;
         object-fit: cover;
         border-radius: 15px;
     }
@@ -106,6 +106,30 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        background-color: rgba(10, 10, 10, 0.3);
+        background-color: rgba(12, 1, 1, 0.4);
+        color: white;
+    }
+    .text-des{
+        font-size: 15px;
+    }
+    .text-bold{
+    font-weight: 700;
+    }
+    .text-brand{
+        font-family: "Monomakh", serif;        
+    }
+    #bg-gif1{
+        height: 65vh;
+        position: relative;
+        background-image: url(/image/gif-background2.gif);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .btn-1{
+        height: 35px;
+        width: 100px;
+        background-color: #777777;
+        cursor: pointer;
+        
     }
 }
