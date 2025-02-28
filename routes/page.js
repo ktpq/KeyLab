@@ -15,4 +15,8 @@ router.get('/enterCode', function(req, res){
     res.render('enterCode');
 });
 
+router.get('/products', function(req,res){
+    res.render('products')
+})
+
 module.exports = router
