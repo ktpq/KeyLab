@@ -14,6 +14,9 @@ router.get('/sendemail', function(req, res){
 router.get('/enterCode', function(req, res){
     res.render('enterCode');
 });
+router.get('/buy', function(req, res){
+    res.render('buy');
+});
 
 router.get('/products', function(req,res){
     res.render('products')

@@ -1,0 +1,131 @@
+<%- include('partials/headHtml')%>
+<style>
+
+.mynav input{ display: none; }
+label{
+    font-family: sans-serif;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #777777;
+}
+.mynav label:last-of-type{ border-right: 0; }
+
+.mynav input:checked + label{
+    background: #becbff;
+}
+
+</style>
+<body class="bg-primary text-primary">
+    <%- include('partials/nav.ejs')%>
+    <div class="text-center flex justify-center mt-10">
+        <div class="grid md:grid-cols-2 text-white w-[80%] sm:grid-cols-1">
+            <div class="h-[50vh]  text-center">
+                <div class="flex justify-center">
+                    <img src="/image/board2.webp" class="text-center" style="height: 50vh;" >  
+                  </div>
+            </div>
+            <div class="text-start">
+                <h3 class="text-2xl">ปรับแต่งตามที่ต้องการ</h3>
+                <h1 class="text-5xl  mt-3 text-brand">White Damascus T60 + Switch</h1>
+                <h3 class="text-3xl  mt-4 text-brand">2000<span class="text-primary ms-3">บาท</span></h3>
+                <p class="mt-10">case</p>
+                <div class="mynav mt-4">
+                    <input type="radio" id="x1" name="x"/>
+                    <label for="x1" class="me-3 mt-3">Choice 1</label>
+                    
+                    <input type="radio" id="x2" name="x"/>
+                    <label for="x2" class="me-3 mt-3">Choice 2</label>
+                    
+                    <input type="radio" id="x3" name="x"/>
+                    <label for="x3" class="me-3 mt-3">Choice 3</label>
+                    
+                    <input type="radio" id="x4" name="x"/>
+                    <label for="x4" class="me-3 mt-3">Choice 4</label>
+                    
+                    <!-- as many choices as you like -->
+                </div>
+                <p class="mt-10">Switch</p>
+                <div class="mynav mt-4">
+                    <input type="radio" id="x5" name="x1"/>
+                    <label for="x5" class="me-3 mt-3">Choice 1</label>
+                    
+                    <input type="radio" id="x6" name="x1"/>
+                    <label for="x6" class="me-3 mt-3">Choice 2</label>
+                    
+                    <input type="radio" id="x7" name="x1"/>
+                    <label for="x7" class="me-3 mt-3">Choice 3</label>
+                    
+                    <input type="radio" id="x8" name="x1"/>
+                    <label for="x8" class="me-3 mt-3">Choice 4</label>
+                    
+                    <!-- as many choices as you like -->
+                </div>
+                <h2 class="text-2xl mt-4">จำนวน</h2>
+                <input type="text" placeholder="ใส่จำนวน" class="text-black mt-2" style="border-radius: 10px;"><br>
+                <button type="button" class="mt-4 btn-1" onclick="mecheck()" style="cursor: pointer;">เพิ่มในตระกร้า</button>
+            </div>
+        </div>
+    </div>
+    <h3 class="text-5xl text-white mt-10 text-bold text-center">สินค้าที่ใกล้เคียง</h3>
+    <div class="grid grid-cols-4 gap-7 text-center text-white mt-10">
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+      </div>
+</body>
+
+<%- include('partials/footHtml')%>

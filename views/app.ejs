@@ -1,19 +1,25 @@
 <%- include('partials/headHtml')%>
 
-<body class="bg-black">
-    <%- include('partials/nav.ejs')%>
+<body class="bg-primary text-primary">
+  <%- include('partials/nav.ejs')%>
+  
+  <div class="bg-gif mt-10 text-center">
+    <div class="bg-overlay "></div>
+      <div class="text-black ">
+        <div class="flex items-center">
+          <div class="p-20 text-center mt-10">
+            <h1 class="font-bold text-6xl mb-10 text-black">คีย์บอร์ดระดับสูง สำหรับ "ระดับสูง"</h1>
+            <p class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at, expedita sapiente ut possimus sed eius incidunt voluptatum id repudiandae non mollitia cupiditate culpa, inventore accusamus nostrum beatae tenetur optio nihil quam omnis aspernatur asperiores ab adipisci! Numquam voluptas recusandae sit illum error vero. Eum maiores culpa totam odit, facere quos aliquid? Asperiores facilis, facere eligendi, dolorum iusto doloribus quam enim neque quia vitae maxime voluptas expedita architecto obcaecati quae alias veniam quasi non cupiditate! Tempore explicabo at reiciendis aliquid similique! Ex ipsam magni voluptatem numquam molestias optio voluptate aperiam praesentium ad, illum dolores quaerat delectus doloremque. Neque, possimus quaerat.</p>
+        </div>
+      </div>
+  </div>
 
-    <div class="flex justify-center items-center mt-20 ">
-      <div class="p-20  bg-primary w-[80%] text-center">
-        <h1 class="font-bold text-6xl mb-10 text-white"> Welcome to keyLab </h1>
-        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at, expedita sapiente ut possimus sed eius incidunt voluptatum id repudiandae non mollitia cupiditate culpa, inventore accusamus nostrum beatae tenetur optio nihil quam omnis aspernatur asperiores ab adipisci! Numquam voluptas recusandae sit illum error vero. Eum maiores culpa totam odit, facere quos aliquid? Asperiores facilis, facere eligendi, dolorum iusto doloribus quam enim neque quia vitae maxime voluptas expedita architecto obcaecati quae alias veniam quasi non cupiditate! Tempore explicabo at reiciendis aliquid similique! Ex ipsam magni voluptatem numquam molestias optio voluptate aperiam praesentium ad, illum dolores quaerat delectus doloremque. Neque, possimus quaerat.</p>
     </div>
-    </div>
-    <h1 class="text-center text-white mt-10" style="font-size: 50px;">แบรนด์ยอดนิยม</h1>
-    <div class="grid md:grid-cols-2 sm:grid-cols-1 text-white text-center mt-10 pl-15 pr-15 gap-x-32 gap-y-24 align-text-bottom">
+    <h1 class="text-center text-white mt-10 text-bold" style="font-size: 50px;">แบรนด์ยอดนิยม</h1>
+    <div class="grid md:grid-cols-2 sm:grid-cols-1 text-white text-center mt-10 pl-15 pr-15 gap-x-32 gap-y-24 align-text-bottom text-brand">
       <div class="h-[450px] text-6xl wrap flex items-end justify-center">
-          <a style="position: absolute;height: 100%;width: 100%;" href=""></a>
-          <h3 class="text-white ">AGAR <br><span class="text-xl">buy now</span></h3>
+          <a style="position: absolute;height: 100%;width: 100%; " href=""></a>
+          <h3 class="text-white">AGAR <br><span class="text-xl">buy now</span></h3>
         <img src="/image/agar.jpg" class="img-1 zoom " >
       </div>
       <div class="h-[450px] wrap2 text-6xl flex items-end justify-center">
@@ -31,47 +37,137 @@
       <h3 class="text-white ">KBD <br><span class="text-xl">buy now</span></h3>
     <img src="/image/kbd.jpg" class="img-1 zoom " >
   </div>
-    </div>
-
-
-<div class="bg-gif mt-10 text-center">
-  <div class="bg-overlay z-10"></div>
-    <div class="text-black text-6xl z-20">
-      <h3 class="text-black">hello</h3>
-    </div>
 </div>
 
 
-  <h3 class="text-5xl text-center text-white mt-20 ">ประเภทของสินค้า</h3>
-      <div class="grid grid-cols-3 gap-15 text-white mt-10 p-15 text-center">
-        <div class="h-[375px] wrap3 inline-block">
+
+<div class="owl-carousel" style="width: 100%;height: 750px;">
+  <div> Your Content </div>
+  <div> Your Content </div>
+  <div> Your Content </div>
+  <div> Your Content </div>
+  <div> Your Content </div>
+  <div> Your Content </div>
+  <div> Your Content </div>
+</div>
+<h3 class="text-5xl text-center text-white mt-20 text-bold">หมวดหมู่สินค้า</h3>
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-15 text-white mt-10 p-15 text-center">
+        <div class="h-[420px] wrap3 inline-block ">
           <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
             <img src="/image/board2.webp" class="img-back text-center" >
             <img src="/image/board.webp" class="img-front" >
           </div>
-          <div class="flex items-end justify-center" style="position: absolute;width: 100%;height: 100%;">
-            <h3 class="text-center ">Basekit</h3>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+        
           </div>
         </div>
-        <div class="h-[375px] wrap3 inline-block">
+        <div class="h-[420px] wrap3 inline-block">
           <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
             <img src="/image/switch.webp" class="img-back text-center" >
             <img src="/image/switch2.webp" class="img-front" >
           </div>
-          <div class="flex items-end justify-center" style="position: absolute;width: 100%;height: 100%;">
-            <h3 class="text-center ">Switch</h3>
+          <div class="flex items-end justify-center p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl">Switch</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
           </div>
         </div>
-        <div class="h-[375px] wrap3 inline-block">
+        <div class="h-[420px] wrap3 inline-block">
           <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
             <img src="/image/keycap.jpg" class="img-back text-center" >
             <img src="/image/keycap2.webp" class="img-front" >
           </div>
-          <div class="flex items-end justify-center" style="position: absolute;width: 100%;height: 100%;">
-            <h3 class="text-center ">Keycap</h3>
+          <div class="flex items-end justify-center p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl">Keycap</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
           </div>
         </div>
 
+      </div>
+      <section class="mt-10" style="position: relative; height: 70vh;">
+        <div id="bg-gif1" class="z-10">
+        </div>
+      </section>
+      <h3 class="text-5xl text-white ms-25 text-bold" >คอมโบแนะนำ</h3>
+      <p class="text-xl mt-5 text-white ms-35">60% Keyboard + Switch</p>
+      <div class="grid grid-cols-4 gap-7 text-center text-white mt-10">
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="h-[420px] wrap3 inline-block ">
+          <a href="/buy">
+          <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+            <img src="/image/board2.webp" class="img-back text-center" >
+            <img src="/image/board.webp" class="img-front" >
+          </div>
+          <div class="flex items-end p-10 mt-10 text-start" style="position: absolute;width: 100%;height: 100%;">
+            <div class="mt-4 inline-block">
+              <p class="text-3xl text-brand">Keyboard5</p>
+              <p class="text-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia fugit est dignissimos asperiores nisi suscipit.</p>
+            </div>
+          </div>
+        </a>
+        </div>
       </div>
 </body>
 <%- include('partials/footHtml.ejs')%>
