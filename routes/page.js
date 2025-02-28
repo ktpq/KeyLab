@@ -18,4 +18,8 @@ router.get('/buy', function(req, res){
     res.render('buy');
 });
 
+router.get('/products', function(req,res){
+    res.render('products')
+})
+
 module.exports = router
