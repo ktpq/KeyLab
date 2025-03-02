@@ -1595,6 +1595,9 @@
   .bg-red-700 {
     background-color: var(--color-red-700);
   }
+  .bg-white {
+    background-color: var(--color-white);
+  }
   .bg-yellow-500 {
     background-color: var(--color-yellow-500);
   }
