@@ -21,5 +21,8 @@ router.get('/buy', function(req, res){
 router.get('/products', function(req,res){
     res.render('products')
 })
+router.get('/order', function(req,res){
+    res.render('order')
+})
 
 module.exports = router
