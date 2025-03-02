@@ -22,4 +22,12 @@ router.get('/products', function(req,res){
     res.render('products')
 })
 
+router.get('/user', function(req,res){
+    res.render('user')
+})
+
+router.get('/cart', function(req,res){
+    res.render('cart')
+})
+
 module.exports = router

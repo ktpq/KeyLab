@@ -1,0 +1,85 @@
+<%- include('partials/headHtml')%>
+    <body class="bg-third text-primary">
+        <%- include('partials/navUser')%>
+        <section class="text-white w-[75vw] mx-auto my-5 max-lg:w-[100vw]">
+            <h1 class="text-5xl pl-4"> Profile </h1>
+
+            <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
+                <h2 class="text-2xl mb-3"> Email </h2>
+                <h2 class="text-xl"> 66070013@kmitl.ac.th</h2>
+            </div>
+
+            <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl mb-3"> Address </h2>
+                    <a href="/user" class="px-5 py-2 bg-third mb-3 hover:bg-red-300 duration-300"> Save </a>
+                </div>
+                <!-- ถ้าไม่มีข้อมูลในฐานข้อมูล -->
+                 <button class="add-button bg-third w-[50%] text-left p-10 max-md:w-[100%] hover:bg-red-300 duration-300"> + Add</button>
+                 <input type="text" class="input-address bg-third border-none w-[40%] hidden max-lg:w-[100%]" placeholder="ป้อนที่อยู่ของคุณ">
+
+                <!-- ถ้ามีข้อมูลในฐานข้อมูล -->
+                <h2 class="text-xl hidden"> 66070013@kmitl.ac.th</h2>
+
+            </div>
+
+            <h1 class="text-5xl my-5 pl-4"> Order </h1>
+            <div class="ml-40 mt-5 py-5 px-5 max-lg:ml-0">
+                <table class="border-b w-[100%]">
+
+                    <tr class="border-b">
+                        <th class="w-[20%] py-2"> รูป </th>
+                        <th> สินค้า </th>
+                        <th> ราคา </th>
+                        <th> จำนวน </th>
+                        <th> สถานะ </th>
+                    </tr>
+
+                    <tr class="border-b-2 border-b-neutral-600">
+                        <td class="flex justify-center"> <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" class="w-[135px] my-4"> </td>
+                        <td class="text-center text-xl w-[30%]"> Red switch </td>
+                        <td class="text-center text-xl"> 199 บาท </td>
+                        <td class="text-center text-xl"> 2 </td>
+                        <td class="text-center text-xl"> Complete </td>
+                    </tr>
+
+                    <tr class="border-b-2 border-b-neutral-600">
+                        <td class="flex justify-center"> <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" class="w-[135px] my-4"> </td>
+                        <td class="text-center text-xl w-[30%]"> Red switch </td>
+                        <td class="text-center text-xl"> 199 บาท </td>
+                        <td class="text-center text-xl"> 2 </td>
+                        <td class="text-center text-xl"> Complete </td>
+                    </tr>
+
+                    <tr class="border-b-2 border-b-neutral-600">
+                        <td class="flex justify-center"> <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" class="w-[135px] my-4"> </td>
+                        <td class="text-center text-xl w-[30%]"> Red switch </td>
+                        <td class="text-center text-xl"> 199 บาท </td>
+                        <td class="text-center text-xl"> 2 </td>
+                        <td class="text-center text-xl"> Complete </td>
+                    </tr>
+
+                </table>
+            </div>
+        </section>
+        <script>
+
+            const addButton = document.querySelector('.add-button');
+            const input = document.querySelector('.input-address')
+            addButton.addEventListener('click', () =>{
+                if (input.classList.contains('hidden')) {
+                    input.classList.remove('hidden');
+                    input.focus();
+                    addButton.classList.add('hidden') // แสดง input
+                } else {
+                    input.classList.add('hidden'); // ซ่อน input
+                }
+            })
+
+            input.addEventListener('blur', () => {
+                    input.classList.add('hidden');
+                    addButton.classList.remove('hidden')
+                });
+        </script>
+    </body>
+    <%- include('partials/footHtml')%>
