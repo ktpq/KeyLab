@@ -132,4 +132,17 @@
         cursor: pointer;
         
     }
+    .underlinecl{
+        border-bottom:solid 1px ;
+        margin-bottom: 30px;
+    }
+    .underlinedes{
+        border-bottom:solid 1px ;
+        margin-bottom: 30px;
+        border-color: #292929;
+    }
+    .upperline{
+        border-top:solid 1px ;
+        border-color: white;
+    }
 }

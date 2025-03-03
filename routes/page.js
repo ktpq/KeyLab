@@ -21,5 +21,14 @@ router.get('/buy', function(req, res){
 router.get('/products', function(req,res){
     res.render('products')
 })
+router.get('/order', function(req,res){
+    res.render('order')
+})
+router.get('/manuser', function(req,res){
+    res.render('manuser')
+})
+router.get('/payment', function(req,res){
+    res.render('payment')
+})
 
 module.exports = router
