@@ -31,4 +31,12 @@ router.get('/payment', function(req,res){
     res.render('payment')
 })
 
+router.get('/cart', function(req,res){
+    res.render('cart')
+})
+
+router.get('/user', function(req,res){
+    res.render('user')
+})
+
 module.exports = router
