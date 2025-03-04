@@ -1,0 +1,62 @@
+CASE:
+60:
+https://kbdfans.com/collections/case/products/gt-60-case
+https://kbdfans.com/collections/case/products/special-edition-tofu60-redux-case
+https://kbdfans.com/collections/case/products/holy60-case
+https://kbdfans.com/collections/case/products/tofu60-redux-case
+https://kbdfans.com/collections/case/products/tofu60-2-0-case
+65:
+https://kbdfans.com/collections/case/products/tofu65-2-0-case-1
+https://kbdfans.com/collections/case/products/461e-case
+https://kbdfans.com/collections/case/products/tofu65-2-0-case
+80:
+https://kbdfans.com/collections/case/products/gt-80-case
+https://kbdfans.com/collections/case/products/margo-case
+https://kbdfans.com/collections/90-kbd19x/products/kbd8x-mkiii-og-solder-version
+
+====================================================================================================================
+
+KEYCAPS:
+https://kbdfans.com/collections/keycaps/products/gmk-violet-alert
+https://kbdfans.com/collections/keycaps/products/pbtfans-lucy-r2
+https://kbdfans.com/collections/keycaps/products/gmk-cyl-astraeus
+https://kbdfans.com/collections/keycaps/products/gmk-black-gold
+https://kbdfans.com/collections/keycaps/products/pbtfans-origami
+https://kbdfans.com/collections/keycaps/products/gmk-cyl-prussian-blue
+https://kbdfans.com/collections/keycaps/products/gmk-cyl-darling
+https://kbdfans.com/collections/keycaps/products/gmk-tempest
+https://kbdfans.com/collections/keycaps/products/pbtfans-count-dracula
+https://kbdfans.com/collections/keycaps/products/pbtfans-valhalla
+
+====================================================================================================================
+
+SWITCHES:
+https://kbdfans.com/collections/switches/products/naevies-ec-switches
+https://kbdfans.com/collections/switches/products/skyline-magnetic-switches
+https://kbdfans.com/collections/switches/products/siliworksxnapworks-nap-linear-switches
+https://kbdfans.com/collections/switches/products/siliworks-type-r-tactile-switches
+https://kbdfans.com/collections/switches/products/gateron-magnetic-jade-max-switch-set
+https://kbdfans.com/collections/switches/products/mmd-princess-linear-tactile-switches-v2
+https://kbdfans.com/collections/switches/products/cherry-mx-purple-mx2a-v1nw-tactile-switches
+https://kbdfans.com/collections/switches/products/gateron-melodic-switches
+https://kbdfans.com/collections/switches/products/gateron-0-silent-linear-switch
+https://kbdfans.com/collections/switches/products/gateron-g-pro-3-0-silver-switches
+https://kbdfans.com/collections/switches/products/gateron-g-pro-3-0-white-switches
+
+SQL Template:
+INSERT INTO Products (type, brand_id, name, description, price, img1, img2) 
+VALUES 
+('switch', 1, 'Naevies EC Switches', NULL, 220, '/images/Products/Switches/NaeviesEC_1.webp', '/images/Products/Switches/NaeviesEC_2.webp'),
+('switch', 2, 'Skyline Magnetic Switches', NULL, 150, '/images/Products/Switches/SkylineMag_1.webp', '/images/Products/Switches/SkylineMag_2.webp'),
+('switch', 3, 'Siliworks×Napworks Nap Linear Switches', NULL, 85, '/images/Products/Switches/SiliworksxNapworksLinear_1.webp', '/images/Products/Switches/SiliworksxNapworksLinear_2.webp'),
+('switch', 4, 'Siliworks Type R tactile Switches', NULL, 160, '/images/Products/Switches/SiliworksRtactile_1.webp', '/images/Products/Switches/SiliworksRtactile_2.webp'),
+('switch', 5, 'MMD Princess Linear/Tactile Switches V2', NULL, 70, '/images/Products/Switches/MMDprincess_1.webp', '/images/Products/Switches/MMDprincess_2.webp'),
+('switch', 6, 'Cherry MX Purple MX2A-V1NW Tactile Switches', NULL, 130, '/images/Products/Switches/CherryMXpurple_1.webp', '/images/Products/Switches/CherryMXpurple_2.webp'),
+('switch', 7, 'GATERON MELODIC Clicky SWITCHES', NULL, 220, '/images/Products/Switches/GateronMelodic_1.webp', '/images/Products/Switches/GateronMelodic_2.webp'),
+('switch', 8, 'GATERON 0° Silent Linear Switch', NULL, 220, '/images/Products/Switches/Gateron0_1.webp', '/images/Products/Switches/Gateron0_2.webp'),
+('switch', 9, 'Gateron G Pro 3.0 Silver Linear Switches', NULL, 370, '/images/Products/Switches/GateronGpro_1.webp', '/images/Products/Switches/GateronGpro_2.webp'),
+('switch', 10, 'Gateron G Pro 3.0 White Linear Switches', NULL, 270, '/images/Products/Switches/GateronGpro3white_1.webp', '/images/Products/Switches/GateronGpro3white_2.webp');
+
+INSERT INTO Keycaps(keycap_id, prod_id, language)
+VALUES(1, 11, EN),
+

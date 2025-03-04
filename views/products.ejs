@@ -25,87 +25,28 @@
                         <p class="text-center text-white">Keycaps section</p>
 
                         <!-- Add Keycaps products here -->
-                        <div class="grid grid-cols-4 gap-7 text-centermt-10 my-10 text-white">
-                            <div class="h-[420px] wrap3 inline-block">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
+
+                        <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                            <% if (keycaps && keycaps.length > 0) { %>
+                                <% keycaps.forEach(keycapsItem => { %>
+                                    <div class="h-[420px] wrap3 inline-block">
+                                        <a href="/buy/<%= keycapsItem.prod_id %>">
+                                            <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+                                                <img src="<%= keycapsItem.img1 %>" class="img-back text-center">
+                                                <img src="<%= keycapsItem.img2 %>" class="img-front">
+                                            </div>
+                                            <div class="flex items-end p-10 mt-10 text-start justify-center" style="position: absolute;width: 100%;height: 100%;">
+                                                <div class="mt-4 inline-block text-center">
+                                                    <p class="text-3xl text-brand"><%= keycapsItem.name %></p>
+                                                    <p class="text-des"><%= keycapsItem.price %> บาท</p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">asd</p>
-                                            <p class="text-des">3000.-</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="h-[420px] wrap3 inline-block ">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
-                                    </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">kuasdy</p>
-                                            <p class="text-des">ราคา 3000 บาท</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="h-[420px] wrap3 inline-block ">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
-                                    </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">ball</p>
-                                            <p class="text-des">ราคา 3000 บาท</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="h-[420px] wrap3 inline-block ">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
-                                    </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">dasdad</p>
-                                            <p class="text-des">ราคา 3000 บาท</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="h-[420px] wrap3 inline-block ">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
-                                    </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">คีย์บอร์ด</p>
-                                            <p class="text-des">ราคา 3000 บาท</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                <% }); %>
+                            <% } else { %>
+                                <p class="text-center text-white">No Keycaps available.</p>
+                            <% } %>
                         </div>
 
                     </div>
@@ -114,23 +55,28 @@
                         <p class="text-center text-white">Switches section</p>
 
                         <!-- Add Switches products here -->
-                        <div class="grid grid-cols-4 gap-7 text-centermt-10 my-10 text-white">
-                            <div class="h-[420px] wrap3 inline-block">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
+
+                        <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                            <% if (switches && switches.length > 0) { %>
+                                <% switches.forEach(switchItem => { %>
+                                    <div class="h-[420px] wrap3 inline-block">
+                                        <a href="/buy/<%= switchItem.prod_id %>">
+                                            <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+                                                <img src="<%= switchItem.img1 %>" class="img-back text-center">
+                                                <img src="<%= switchItem.img2 %>" class="img-front">
+                                            </div>
+                                            <div class="flex items-end p-10 mt-10 text-start justify-center" style="position: absolute;width: 100%;height: 100%;">
+                                                <div class="mt-4 inline-block text-center">
+                                                    <p class="text-3xl text-brand"><%= switchItem.name %></p>
+                                                    <p class="text-des"><%= switchItem.price %> บาท</p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">lol</p>
-                                            <p class="text-des">3000.-</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                <% }); %>
+                            <% } else { %>
+                                <p class="text-center text-white">No switches available.</p>
+                            <% } %>
                         </div>
 
                     </div>
@@ -139,42 +85,30 @@
                         <p class="text-center text-white">Case section</p>
 
                         <!-- Add Case products here -->
-                        <div class="grid grid-cols-4 gap-7 text-centermt-10 my-10 text-white">
-                            <div class="h-[420px] wrap3 inline-block">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
+
+                        <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                            <% if (cases && cases.length > 0) { %>
+                                <% cases.forEach(casesItem => { %>
+                                    <div class="h-[420px] wrap3 inline-block">
+                                        <a href="/buy/<%= casesItem.prod_id %>">
+                                            <div class="flex justify-center" style="position: absolute;width: 100%;height: 100%;">
+                                                <img src="<%= casesItem.img1 %>" class="img-back text-center">
+                                                <img src="<%= casesItem.img2 %>" class="img-front">
+                                            </div>
+                                            <div class="flex items-end p-10 mt-10 text-start justify-center" style="position: absolute;width: 100%;height: 100%;">
+                                                <div class="mt-4 inline-block text-center">
+                                                    <p class="text-3xl text-brand"><%= casesItem.name %></p>
+                                                    <p class="text-des"><%= casesItem.price %> บาท</p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">balelr</p>
-                                            <p class="text-des">3000.-</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                <% }); %>
+                            <% } else { %>
+                                <p class="text-center text-white">No Keycaps available.</p>
+                            <% } %>
                         </div>
-                        <div class="grid grid-cols-4 gap-7 text-centermt-10 my-10 text-white">
-                            <div class="h-[420px] wrap3 inline-block">
-                                <a href="/buy">
-                                    <div class="flex justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <img src="/image/board2.webp" class="img-back text-center">
-                                        <img src="/image/board.webp" class="img-front">
-                                    </div>
-                                    <div class="flex items-end p-10 mt-10 text-start justify-center"
-                                        style="position: absolute;width: 100%;height: 100%;">
-                                        <div class="mt-4 inline-block text-center">
-                                            <p class="text-3xl text-brand">baller</p>
-                                            <p class="text-des">3000.-</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div id="tab4" class="tab-content hidden">
