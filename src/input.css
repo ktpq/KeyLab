@@ -98,7 +98,7 @@
     .bg-gif{
         height: 85vh;
         position: relative;
-        background-image: url(/image/gif-background.gif);
+        background-image: url(/image/background.png);
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -106,7 +106,7 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        background-color: rgba(12, 1, 1, 0.4);
+        background-color: rgba(12, 12, 12, 0.7);
         color: white;
     }
     .text-des{
@@ -122,8 +122,10 @@
         height: 65vh;
         position: relative;
         background-image: url(/image/gif-background2.gif);
-        background-size: cover;
+        background-size:cover;
+        filter: brightness(0.6);
         background-repeat: no-repeat;
+        background-position: center;
     }
     .btn-1{
         height: 50px;
