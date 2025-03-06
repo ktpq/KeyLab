@@ -126,9 +126,13 @@
         background-repeat: no-repeat;
     }
     .btn-1{
-        height: 35px;
-        width: 100px;
-        background-color: #777777;
+        height: 50px;
+        width: 165px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        color: black;
         cursor: pointer;
         
     }
@@ -144,5 +148,34 @@
     .upperline{
         border-top:solid 1px ;
         border-color: white;
+    }
+    .mynav input{ display: none; }
+    label{
+        font-family: sans-serif;
+        padding: 10px 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+        background-color: white;
+        color: #202020;
+    }
+    .mynav label:last-of-type{ border-right: 0; }
+    
+    .mynav input:checked + label{
+        background: #becbff;
+        color: white;
+    }
+       
+    .btn-2{
+        padding: 5px;
+        height: 55px;
+        width: 195px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        
     }
 }

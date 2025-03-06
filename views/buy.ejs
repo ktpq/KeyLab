@@ -1,21 +1,5 @@
 <%- include('partials/headHtml')%>
-<style>
-
-.mynav input{ display: none; }
-label{
-    font-family: sans-serif;
-    padding: 10px 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-    background-color: #777777;
-}
-.mynav label:last-of-type{ border-right: 0; }
-
-.mynav input:checked + label{
-    background: #becbff;
-}
-
-</style>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
 <body class="bg-primary text-primary">
     <%- include('partials/nav.ejs')%>
     <div class="text-center flex justify-center mt-10">
@@ -29,7 +13,21 @@ label{
                 <h3 class="text-2xl">ปรับแต่งตามที่ต้องการ</h3>
                 <h1 class="text-5xl  mt-3 text-brand">White Damascus T60 + Switch</h1>
                 <h3 class="text-3xl  mt-4 text-brand">2000<span class="text-primary ms-3">บาท</span></h3>
-                <p class="mt-10">case</p>
+                <div class="flex justify-end">
+                  <button class="btn-2">บันทึกในรายการโปรด
+                    <span>
+                      <lord-icon
+                      src="/image/wired-lineal-20-love-heart-hover-heartbeat-alt.json"
+                      trigger="hover"
+                      stroke="bold"
+                      state="hover-pinch"
+                      colors="primary:#121331,secondary:#f28ba8,tertiary:#646e78"
+                      style="width:45px;height:50px;">
+                  </lord-icon>                  
+                </span>
+                  </button>
+                </div>
+                <p class="mt-3">case</p>
                 <div class="mynav mt-4">
                     <input type="radio" id="x1" name="x"/>
                     <label for="x1" class="me-3 mt-3">Choice 1</label>
@@ -63,7 +61,18 @@ label{
                 </div>
                 <h2 class="text-2xl mt-4">จำนวน</h2>
                 <input type="text" placeholder="ใส่จำนวน" class="text-black mt-2" style="border-radius: 10px;"><br>
-                <button type="button" class="mt-4 btn-1" onclick="mecheck()" style="cursor: pointer;">เพิ่มในตระกร้า</button>
+                <button type="button" class="mt-8 btn-1 text-xl" onclick="mecheck()" style="cursor: pointer;">เพิ่มในตระกร้า
+                  <span>
+                    <lord-icon
+                    src="/image/wired-lineal-146-trolley-hover-jump.json"
+                    trigger="hover"
+                    stroke="bold"
+                    state="hover-pinch"
+                    colors="primary:#121331,secondary:#ebe6ef,tertiary:#646e78"
+                    style="width:45px;height:50px;">
+                </lord-icon>                  
+              </span>
+            </button>
             </div>
         </div>
     </div>
