@@ -11,8 +11,26 @@ async function openDb() {
     });
 }
 
-router.get('/', function(req, res){
-    res.render('app');
+// router.get('/', function(req, res){
+//     res.render('app');
+// });
+
+router.get('/', async (req, res) => {
+    try {
+        const db = await openDb();
+        const products = await db.all("SELECT * FROM products ORDER BY RANDOM() LIMIT 4"); // Fetch all products
+
+        // Shuffle the array using Fisher-Yates algorithm
+        for (let i = products.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [products[i], products[j]] = [products[j], products[i]];
+        }
+
+        res.render('app', { products }); // Send shuffled products to frontend
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Database Error");
+    }
 });
 
 router.get('/enterEmail', function(req, res){
@@ -29,20 +47,6 @@ router.get('/buy', function(req, res){
 // router.get('/products', function(req,res){
 //     res.render('products')
 // })
-
-// router.get('/products', async (req, res) => {
-//     try {
-//         const db = await openDb();
-//         const keycaps = await db.all("SELECT * FROM products WHERE type = 'Keycaps'");
-//         const switches = await db.all("SELECT * FROM products WHERE type = 'Switches'");
-//         const cases = await db.all("SELECT * FROM products WHERE type = 'Cases'");
-
-//         res.render('products', { keycaps, switches, cases });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send("Database Error");
-//     }
-// });
 
 router.get('/products', async (req, res) => {
     try {
@@ -74,6 +78,20 @@ router.get('/pbproducts', async (req, res) => {
         console.log("pre-built:", pre_built);
 
         res.render('pbproducts', { pre_built });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Database Error");
+    }
+});
+
+router.get('/kitsproduct', async (req, res) => {
+    try {
+        const db = await openDb();
+        const keyboard_kits = await db.all("SELECT * FROM products WHERE category = 'kit'");
+
+        console.log("kit:", keyboard_kits);
+
+        res.render('kitsproduct', { keyboard_kits });
     } catch (error) {
         console.error(error);
         res.status(500).send("Database Error");
