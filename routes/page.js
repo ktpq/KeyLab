@@ -98,6 +98,23 @@ router.get('/kitsproduct', async (req, res) => {
     }
 });
 
+router.get('/buy/:id', async (req, res) => {
+    const productId = req.params.id; // Get ID from URL parameter
+
+    try {
+        const db = await openDb();
+        const product = await db.all("SELECT * FROM products WHERE prod_id = ?", [productId]);
+        const relatedProducts = await db.all("SELECT * FROM products WHERE prod_id != ? LIMIT 4", [productId]);
+
+        console.log("Products:", product, relatedProducts);
+
+        res.render('buyItem', { product, relatedProducts });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Database Error");
+    }
+});
+
 router.get('/order', function(req,res){
     res.render('order')
 })

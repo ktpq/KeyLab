@@ -1,5 +1,18 @@
 <%- include('partials/headHtml')%>
     <body class="bg-primary text-primary">
+
+        <div id="popup1" class="bg-white border-gray-300 border-8 p-5 w-[35vw]">
+            <h1 class="text-3xl font-bold"> <span class="text-3xl text-gray-300"> | </span>Order details </h1>
+            <div class="flex">
+                <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" width="100" class="border border-black">
+                <div class="w-[70%] border border-black pl-5 pt-3">
+                    <p class="font-bold"> Keychron switch </p>
+                    <p> switch: red </p>
+                </div>
+                <p class="border border-black"> Price : 900baht</p>
+            </div>
+        </div>
+        
         <%- include('partials/navUser')%>
         <section class="text-white w-[75vw] mx-auto my-5 max-lg:w-[100vw]">
             <h1 class="text-5xl pl-4"> Profile </h1>
@@ -23,41 +36,35 @@
 
             </div>
 
+            <!-- order part -->
             <h1 class="text-5xl my-5 pl-4"> Order </h1>
             <div class="ml-40 mt-5 py-5 px-5 max-lg:ml-0">
                 <table class="border-b w-[100%]">
 
                     <tr class="border-b">
-                        <th class="w-[20%] py-2"> รูป </th>
+                        <th class="w-[20%] py-2"> รหัสคำสั่งซื้อ </th>
                         <th> สินค้า </th>
                         <th> ราคา </th>
-                        <th> จำนวน </th>
                         <th> สถานะ </th>
+                        <th> รายละเอียด </th>
                     </tr>
 
                     <tr class="border-b-2 border-b-neutral-600">
-                        <td class="flex justify-center"> <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" class="w-[135px] my-4"> </td>
+                        <td class="text-center text-xl py-10"> 15754 </td>
                         <td class="text-center text-xl w-[30%]"> Red switch </td>
                         <td class="text-center text-xl"> 199 บาท </td>
-                        <td class="text-center text-xl"> 2 </td>
                         <td class="text-center text-xl"> Complete </td>
+                        <!-- ใน popovertarget กับ id ให้เอา orderID มาใส่ตอนดึงข้อมูล เพื่อให้มันเปิดได้ถูกหน้าต่าง -->
+                        <td class="text-center text-xl"> <button class="border p-5 bg-white text-black" popovertarget="popup1"> ดูรายละเอียด </button> </td>
+                        
+                        <!-- end of comment -->
                     </tr>
 
-                    <tr class="border-b-2 border-b-neutral-600">
-                        <td class="flex justify-center"> <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" class="w-[135px] my-4"> </td>
-                        <td class="text-center text-xl w-[30%]"> Red switch </td>
-                        <td class="text-center text-xl"> 199 บาท </td>
-                        <td class="text-center text-xl"> 2 </td>
-                        <td class="text-center text-xl"> Complete </td>
-                    </tr>
 
-                    <tr class="border-b-2 border-b-neutral-600">
-                        <td class="flex justify-center"> <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" class="w-[135px] my-4"> </td>
-                        <td class="text-center text-xl w-[30%]"> Red switch </td>
-                        <td class="text-center text-xl"> 199 บาท </td>
-                        <td class="text-center text-xl"> 2 </td>
-                        <td class="text-center text-xl"> Complete </td>
-                    </tr>
+                    
+
+                    
+
 
                 </table>
             </div>
