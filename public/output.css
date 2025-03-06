@@ -704,9 +704,6 @@
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
   }
-  .mx-8 {
-    margin-inline: calc(var(--spacing) * 8);
-  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -751,9 +748,6 @@
   }
   .me-3 {
     margin-inline-end: calc(var(--spacing) * 3);
-  }
-  .me-10 {
-    margin-inline-end: calc(var(--spacing) * 10);
   }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
@@ -907,9 +901,6 @@
   }
   .min-h-screen {
     min-height: 100vh;
-  }
-  .w-1 {
-    width: calc(var(--spacing) * 1);
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
@@ -1104,9 +1095,6 @@
   }
   .animate-none {
     animation: none;
-  }
-  .cursor-pointer {
-    cursor: pointer;
   }
   .touch-pinch-zoom {
     --tw-pinch-zoom: pinch-zoom;
@@ -1631,9 +1619,6 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
-  .bg-gray-700 {
-    background-color: var(--color-gray-700);
-  }
   .bg-green-700 {
     background-color: var(--color-green-700);
   }
@@ -1841,9 +1826,6 @@
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
-  }
-  .px-4 {
-    padding-inline: calc(var(--spacing) * 4);
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
