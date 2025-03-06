@@ -872,6 +872,9 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
   .h-\[40px\] {
     height: 40px;
   }
@@ -898,6 +901,9 @@
   }
   .min-h-screen {
     min-height: 100vh;
+  }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
@@ -2702,7 +2708,7 @@
   .bg-gif {
     height: 85vh;
     position: relative;
-    background-image: url(/image/gif-background.gif);
+    background-image: url(/image/background.png);
     background-size: cover;
     background-repeat: no-repeat;
   }

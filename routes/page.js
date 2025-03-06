@@ -54,8 +54,8 @@ router.get('/products', async (req, res) => {
         const keycaps = await db.all("SELECT * FROM products WHERE category = 'keycap'");
         const switches = await db.all("SELECT * FROM products WHERE category = 'switch'");
         const cases = await db.all("SELECT * FROM products WHERE category = 'case'");
-        const pcb = await db.all("SELECT * FROM products WHERE category = 'PCB'");
-        const plates = await db.all("SELECT * FROM products WHERE category = 'Plate'");
+        const pcb = await db.all("SELECT * FROM products WHERE category = 'pcb'");
+        const plates = await db.all("SELECT * FROM products WHERE category = 'Plates'");
 
         console.log("Keycaps:", keycaps);
         console.log("Switches:", switches);

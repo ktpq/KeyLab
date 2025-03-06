@@ -43,6 +43,27 @@ https://kbdfans.com/collections/switches/products/gateron-0-silent-linear-switch
 https://kbdfans.com/collections/switches/products/gateron-g-pro-3-0-silver-switches
 https://kbdfans.com/collections/switches/products/gateron-g-pro-3-0-white-switches
 
+====================================================================================================================
+
+KEYBOARD KITS:
+https://kbdfans.com/collections/diy-kit/products/tofu60-redux-kit-1
+https://kbdfans.com/collections/diy-kit/products/holy60-keyboard-kit
+https://kbdfans.com/collections/diy-kit/products/kbd8x-mkiii-og-solder-version
+https://kbdfans.com/collections/diy-kit/products/tofu65-2-0-pc-kit
+https://kbdfans.com/collections/diy-kit/products/tofu-fa
+https://kbdfans.com/collections/diy-kit/products/pluto
+https://kbdfans.com/collections/diy-kit/products/kbdfans-odin-75-mechanical-keyboard
+https://kbdfans.com/collections/diy-kit/products/taco
+https://kbdfans.com/collections/diy-kit/products/f1-8x-v2
+https://kbdfans.com/collections/diy-kit/products/pre-order-magnum65
+
+====================================================================================================================
+
+IMAGE SOURCE:
+https://vocal.media/gamers/best-mechanical-cheap-keyboards-to-buy-in-2025
+
+====================================================================================================================
+
 SQL Template:
 INSERT INTO Products (type, brand_id, name, description, price, img1, img2) 
 VALUES 
@@ -59,4 +80,13 @@ VALUES
 
 INSERT INTO Keycaps(keycap_id, prod_id, language)
 VALUES(1, 11, EN),
+
+
+ALTER TABLE Keycaps 
+ADD COLUMN language TEXT CHECK (language IN ('TH/ENG', 'JP/ENG', 'KR/ENG'));
+
+
+UPDATE cases 
+SET layout_id = (SELECT layout_id FROM layouts WHERE name = '80%') 
+WHERE prod_id = 21;
 
