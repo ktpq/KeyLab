@@ -10,23 +10,23 @@
 
 
                     <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
-                        <% if (pre_built && pre_built.length> 0) { %>
-                            <% pre_built.forEach(pre_builtItem=> { %>
+                        <% if (keyboard_kits && keyboard_kits.length> 0) { %>
+                            <% keyboard_kits.forEach(keyboard_kitsItem=> { %>
                                 <div class="h-[420px] wrap3 inline-block">
-                                    <a href="/buy/<%= pre_builtItem.prod_id %>">
+                                    <a href="/buy/<%= keyboard_kitsItem.prod_id %>">
                                         <div class="flex justify-center"
                                             style="position: absolute;width: 100%;height: 100%;">
-                                            <img src="<%= pre_builtItem.img1 %>" class="img-back text-center">
-                                            <img src="<%= pre_builtItem.img2 %>" class="img-front">
+                                            <img src="<%= keyboard_kitsItem.img1 %>" class="img-back text-center">
+                                            <img src="<%= keyboard_kitsItem.img2 %>" class="img-front">
                                         </div>
                                         <div class="flex items-end p-10 mt-10 text-start justify-center"
                                             style="position: absolute;width: 100%;height: 100%;">
                                             <div class="mt-4 inline-block text-center">
                                                 <p class="text-3xl text-brand">
-                                                    <%= pre_builtItem.name %>
+                                                    <%= keyboard_kitsItem.name %>
                                                 </p>
                                                 <p class="text-des">
-                                                    <%= pre_builtItem.price %> บาท
+                                                    <%= keyboard_kitsItem.price %> บาท
                                                 </p>
                                             </div>
                                         </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <% }); %>
                                     <% } else { %>
-                                        <p class="text-center text-white">No Pre-built available.</p>
+                                        <p class="text-center text-white">No Kits available.</p>
                                         <% } %>
                     </div>
 

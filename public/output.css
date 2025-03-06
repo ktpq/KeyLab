@@ -590,6 +590,9 @@
   .isolation-auto {
     isolation: auto;
   }
+  .z-1 {
+    z-index: 1;
+  }
   .z-10 {
     z-index: 10;
   }
@@ -697,6 +700,9 @@
     @media (width >= 96rem) {
       max-width: 96rem !important;
     }
+  }
+  .m-9 {
+    margin: calc(var(--spacing) * 9);
   }
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
@@ -872,6 +878,9 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
   .h-\[40px\] {
     height: 40px;
   }
@@ -899,8 +908,26 @@
   .min-h-screen {
     min-height: 100vh;
   }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
+  }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
+  }
+  .w-\[75\%\] {
+    width: 75%;
+  }
+  .w-\[75vw\] {
+    width: 75vw;
+  }
+  .w-\[80\%\] {
+    width: 80%;
   }
   .w-\[8vw\] {
     width: 8vw;
@@ -928,15 +955,6 @@
   }
   .w-\[50\%\] {
     width: 50%;
-  }
-  .w-\[75\%\] {
-    width: 75%;
-  }
-  .w-\[75vw\] {
-    width: 75vw;
-  }
-  .w-\[80\%\] {
-    width: 80%;
   }
   .w-\[90vw\] {
     width: 90vw;
@@ -1820,6 +1838,9 @@
   .p-20 {
     padding: calc(var(--spacing) * 20);
   }
+  .p-\[\16 ��\1 \:o\7 \] {
+    padding: ��:o;
+  }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
@@ -2702,7 +2723,7 @@
   .bg-gif {
     height: 85vh;
     position: relative;
-    background-image: url(/image/gif-background.gif);
+    background-image: url(/image/background.png);
     background-size: cover;
     background-repeat: no-repeat;
   }

@@ -98,7 +98,7 @@
     .bg-gif{
         height: 85vh;
         position: relative;
-        background-image: url(/image/gif-background.gif);
+        background-image: url(/image/background.png);
         background-size: cover;
         background-repeat: no-repeat;
     }
