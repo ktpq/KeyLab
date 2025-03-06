@@ -64,6 +64,26 @@ https://vocal.media/gamers/best-mechanical-cheap-keyboards-to-buy-in-2025
 
 ====================================================================================================================
 
+BRAND NAMES:
+Naevies 1
+Skyline 2
+Siliworks 3
+MMD 4
+Cherry 5
+GATERON 6
+PBTfans 7
+GMK 8 
+Margo 9
+Tofu 10
+Holy 11
+DZ 12
+Pluto 13
+Magnum 14
+KBDfans 15
+อื่นๆครับอ้วน 16
+
+====================================================================================================================
+
 SQL Template:
 INSERT INTO Products (type, brand_id, name, description, price, img1, img2) 
 VALUES 
