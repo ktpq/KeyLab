@@ -36,11 +36,11 @@ router.get('/', async (req, res) => {
 router.get('/enterEmail', function(req, res){
     const userId = req.session.userId;
     console.log(userId)
-    if (userId == null) {
-        res.render('enterEmail');
+    if (userId) {
+        res.redirect('/user');
     } else {
         // ใช้ไฟล์เทมเพลตที่มีอยู่และส่ง userId เป็นตัวแปรไปยังเทมเพลต
-        res.render('user', { userId: userId });
+        res.render('enterEmail');
     }
 });
 
@@ -49,6 +49,7 @@ router.get('/enterEmail', function(req, res){
 router.get('/enterCode', function(req, res){
     res.render('enterCode', { email: req.session.email, password: req.session.password });
 });
+
 router.get('/buy', function(req, res){
     res.render('buy');
 });
@@ -152,8 +153,9 @@ router.get('/enterEmail', async function(req, res){
     }
 });
 
-router.get('/user/:id', async function (req, res) {
-    const userId = req.params.id; // ใช้ req.params.id แทน req.session.userId เพื่อดึง id จาก URL
+router.get('/user', async function (req, res) {
+    const userId = req.session.userId
+    console.log(userId)
     // ตรวจสอบว่า id ต้องไม่ว่างเปล่าและต้องเป็นตัวเลข
     if (!userId || isNaN(userId)) {
         return res.status(400).json({ error: "Invalid user ID" });

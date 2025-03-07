@@ -42,7 +42,7 @@ router.post('/sendcode', function(req, res){
         } else {
             req.session.email = email
             req.session.password = verifyCode
-            req.session.cookie.maxAge=300000
+            req.session.cookie.maxAge=3000000000
             console.log('Send: ' + info.response)
             return res.redirect('/enterCode');
         }
@@ -84,5 +84,14 @@ router.post('/enterCode', async function (req, res) {
         return res.status(500).json({ error: "Database error" });
     }
 });
+
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).send("Error in destroying session");
+      }
+      res.redirect('/'); // หรือส่ง response ตามต้องการ
+    });
+  });
 
 module.exports = router;
