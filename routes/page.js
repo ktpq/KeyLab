@@ -34,8 +34,17 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/enterEmail', function(req, res){
-    res.render('enterEmail');
+    const userId = req.session.userId;
+    console.log(userId)
+    if (userId == null) {
+        res.render('enterEmail');
+    } else {
+        // ใช้ไฟล์เทมเพลตที่มีอยู่และส่ง userId เป็นตัวแปรไปยังเทมเพลต
+        res.render('user', { userId: userId });
+    }
 });
+
+
 
 router.get('/enterCode', function(req, res){
     res.render('enterCode', { email: req.session.email, password: req.session.password });
@@ -129,8 +138,47 @@ router.get('/cart', function(req,res){
     res.render('cart')
 })
 
-router.get('/user', function(req,res){
-    res.render('user')
-})
+router.get('/enterEmail', async function(req, res){
+    const db = await openDb();
+    const userId = req.session.user_id;
+    const email = await db.get("SELECT email FROM Users WHERE user_id = ?", [userId]);
+    const address = await db.get("SELECT address FROM Users WHERE user_id = ?", [userId]);
+    console.log(userId);
+    if (userId == null) {
+        res.render('enterEmail');
+    } else {
+        // Redirect to /user/:id path
+        res.redirect('user', {userId, email, address});
+    }
+});
 
-module.exports = router
+router.get('/user/:id', async function (req, res) {
+    const userId = req.params.id; // ใช้ req.params.id แทน req.session.userId เพื่อดึง id จาก URL
+    // ตรวจสอบว่า id ต้องไม่ว่างเปล่าและต้องเป็นตัวเลข
+    if (!userId || isNaN(userId)) {
+        return res.status(400).json({ error: "Invalid user ID" });
+    }
+
+    try {
+        const db = await openDb();
+        const email = await db.get("SELECT email FROM Users WHERE user_id = ?", [userId]);
+        const address = await db.get("SELECT address FROM Users WHERE user_id = ?", [userId]);
+
+        const sql = "SELECT * FROM Users WHERE user_id = ?";
+        const row = await db.get(sql, [userId]);
+
+        if (!row) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        // ส่งข้อมูลไปยังเทมเพลต user
+        res.render('user', { userId, email , address});
+    } catch (err) {
+        console.error("Database error:", err.message);
+        res.status(500).json({ error: "Database error" });
+    }
+});
+
+module.exports = router;
+
+
