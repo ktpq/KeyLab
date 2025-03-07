@@ -9,8 +9,8 @@
             <h1 class="text-5xl pl-4"> ข้อมูลส่วนตัว </h1>
 
             <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
-                <h2 class="text-2xl mb-3"> อีเมล์ </h2>
-                <h2 class="text-xl"> 66070013@kmitl.ac.th</h2>
+                <h2 class="text-2xl mb-3"> Email </h2>
+                <h2 class="text-xl"> <%= JSON.stringify(email.email) %></h2>
             </div>
 
             <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
@@ -23,7 +23,7 @@
                  <input type="text" class="input-address bg-third border-none w-[40%] hidden max-lg:w-[100%]" placeholder="ป้อนที่อยู่ของคุณ">
 
                 <!-- ถ้ามีข้อมูลในฐานข้อมูล -->
-                <h2 class="text-xl hidden"> 66070013@kmitl.ac.th</h2>
+                <h2 class="text-xl hidden"> <%= JSON.stringify(address) %></h2>
 
             </div>
 

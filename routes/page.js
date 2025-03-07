@@ -33,13 +33,25 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/enterEmail', function (req, res) {
-    res.render('enterEmail');
+
+router.get('/enterEmail', function(req, res){
+    const userId = req.session.userId;
+    console.log(userId)
+    if (userId) {
+        res.redirect('/user');
+    } else {
+        // ใช้ไฟล์เทมเพลตที่มีอยู่และส่ง userId เป็นตัวแปรไปยังเทมเพลต
+        res.render('enterEmail');
+    }
 });
 
-router.get('/enterCode', function (req, res) {
+
+
+router.get('/enterCode', function(req, res){
     res.render('enterCode', { email: req.session.email, password: req.session.password });
 });
+
+
 router.get('/buy', function (req, res) {
     res.render('buy');
 });
@@ -159,8 +171,35 @@ router.get('/cart', function (req, res) {
     res.render('cart')
 })
 
-router.get('/user', function (req, res) {
-    res.render('user')
-})
 
-module.exports = router
+router.get('/user', async function (req, res) {
+    const userId = req.session.userId
+    console.log(userId)
+    // ตรวจสอบว่า id ต้องไม่ว่างเปล่าและต้องเป็นตัวเลข
+    if (!userId || isNaN(userId)) {
+        return res.status(400).json({ error: "Invalid user ID" });
+    }
+
+    try {
+        const db = await openDb();
+        const email = await db.get("SELECT email FROM Users WHERE user_id = ?", [userId]);
+        const address = await db.get("SELECT address FROM Users WHERE user_id = ?", [userId]);
+
+        const sql = "SELECT * FROM Users WHERE user_id = ?";
+        const row = await db.get(sql, [userId]);
+
+        if (!row) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        // ส่งข้อมูลไปยังเทมเพลต user
+        res.render('user', { userId, email , address});
+    } catch (err) {
+        console.error("Database error:", err.message);
+        res.status(500).json({ error: "Database error" });
+    }
+});
+
+module.exports = router;
+
+

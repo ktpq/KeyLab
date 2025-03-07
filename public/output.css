@@ -959,8 +959,12 @@
   .w-\[50\%\] {
     width: 50%;
   }
+  .w-\[70\%\] {
+    width: 70%;
+
   .w-\[60\%\] {
     width: 60%;
+
   }
   .w-\[75\%\] {
     width: 75%;
@@ -1670,6 +1674,7 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
+
   .bg-blue-700 {
     background-color: var(--color-blue-700);
   }
