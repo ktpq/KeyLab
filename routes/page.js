@@ -167,12 +167,9 @@ router.get('/payment', function (req, res) {
     res.render('payment')
 })
 
-router.get('/cart', function (req, res) {
-    res.render('cart')
-})
 
 
-router.get('/user', async function (req, res) {
+router.get('/user', async (req, res) => {
     const userId = req.session.userId
     console.log(userId)
     // ตรวจสอบว่า id ต้องไม่ว่างเปล่าและต้องเป็นตัวเลข

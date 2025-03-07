@@ -4,7 +4,9 @@
         <%- include('partials/nav.ejs') %>
 
             <div class="text-center flex justify-center mt-10">
+                <form action="/addToCart">
                 <% product.forEach(product=> { %>
+                    
                     <div class="grid md:grid-cols-2 text-white w-[80%] sm:grid-cols-1">
                         <div class="h-[50vh] text-center">
                             <div class="flex justify-center">
@@ -22,15 +24,18 @@
                             <h5 class="text-xl mt-4 text-brand">
                                 <%= product.description %>
                             </h5>
+                            
                             <h2 class="text-2xl mt-4">จำนวน</h2>
-                            <input type="text" placeholder="ใส่จำนวน" class="text-black mt-2"
-                                style="border-radius: 10px;">
+                            <input type="text" name="prodId" class="text-black hidden" value="<%= product.prod_id %>" name="prod_id">
+                            <input type="text" placeholder="ใส่จำนวน" class="text-black mt-2" style="border-radius: 10px;" name="quantity">
                             <br>
-                            <button type="button" class="mt-4 btn-1" onclick="addToCart()"
-                                style="cursor: pointer;">เพิ่มในตระกร้า</button>
+                            <button class="add-btn mt-4 btn-1" style="cursor: pointer;" type="submit">เพิ่มในตระกร้า</button>
+                            
                         </div>
                     </div>
+                    
                     <% }); %>
+                </form>
             </div>
 
             <h3 class="text-5xl text-white mt-10 text-bold text-center">สินค้าที่่คุณอาจสนใจ</h3>
@@ -61,5 +66,19 @@
                                 <p class="text-center text-white">No products available.</p>
                                 <% } %>
             </div>
+            <script>
+                // const btn = document.querySelector('add-btn')
+                //     btn.addEventListener('click', addToCart)
+                //     function addToCart() {
+                //         alert('buy');
+                //         const currentUrl = window.location.href;
+                //         const url = new URL(currentUrl);
+                //         const productId = url.pathname.split('/').pop(); // ดึงค่า id จาก URL ปัจจุบัน
+
+                //         const addToCartLink = document.getElementById('addToCartLink');
+                //         addToCartLink.href = `/addProduct/${productId}`;
+                //     }
+                
+              </script>
     </body>
     <%- include('partials/footHtml') %>

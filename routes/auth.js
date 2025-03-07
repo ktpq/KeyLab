@@ -42,7 +42,7 @@ router.post('/sendcode', function(req, res){
         } else {
             req.session.email = email
             req.session.password = verifyCode
-            req.session.cookie.maxAge=3000000000
+            req.session.cookie.maxAge = 3600000;
             console.log('Send: ' + info.response)
             return res.redirect('/enterCode');
         }
@@ -84,7 +84,80 @@ router.post('/enterCode', async function (req, res) {
         return res.status(500).json({ error: "Database error" });
     }
 });
+// router.post('/saveAddress', async (req, res) => {
+//     const db = await openDb();
+//     const address = req.body.addressInput;
+//     console.log(address);
+//     const userSession = req.session.userId;  // แก้ไขตรงนี้
+//     console.log(userSession)
+//     const sql = "UPDATE Users SET address = ? WHERE user_id = ?;";
 
+//     db.run(sql, [address, userSession], function(err) {
+//         if (err) {
+//             console.log(err.message)
+//         }
+        
+//         console.log(`A row has been updated for user_id ${userSession}`);
+//         res.redirect('/user')
+//     });
+// });
+router.post('/user', async (req, res) => {
+    const db = await openDb();
+    const address = req.body.addressInput;
+    const userSession = req.session.userId;
+
+    console.log("Address:", address);
+    console.log("User Session:", userSession);
+
+    const sql = "UPDATE Users SET address = ? WHERE user_id = ?;";
+    
+    await db.run(sql, [address, userSession], function (err) {
+        
+        if (err) {
+            console.error("Database error:", err.message);
+            return res.status(500).send("Error updating address.");
+        }
+        
+        console.log(`A row has been updated for user_id ${userSession}`);
+
+        // ✅ ปิด database connection เพื่อป้องกันการโหลดค้าง
+        db.close((closeErr) => {
+            if (closeErr) {
+                console.error("Error closing database:", closeErr.message);
+            }
+             // Redirect หลังจากทุกอย่างเสร็จสมบูรณ์
+        });
+    });
+    res.redirect('/user'); 
+});
+
+// router.post('/saveAddress', async (req, res) => {
+//     const db = await openDb();
+//     const address = req.body.addressInput;
+//     console.log(address)
+//     const userSession = req.session.userId;
+//     const sql = "UPDATE Users SET address = ? WHERE user_id = ?;";
+//     db.run(sql, [address, userSession], function(err) {
+//         if (err) {
+//             return res.status(500).json({ error: err.message });
+//         }
+//         res.status(200).json({ message: 'Data submitted successfully' });
+//     return res.redirect('/user');
+//     });
+// });
+// router.post('/user', async (req, res) => {
+//     const db = await openDb();
+//     const address = req.body.addressInput;
+//     const sql = "INSERT INTO Users (address) VALUES (?)";
+
+//     db.run(sql, [address], function(err) {
+//         if (err) {
+//             return console.error(err.message);
+//         }
+//         console.log(`A row has been inserted with rowid ${this.lastID}`);
+//         res.redirect('/');
+//     });
+// });
 router.get('/logout', (req, res) => {
     req.session.destroy((err) => {
       if (err) {

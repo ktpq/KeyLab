@@ -12,21 +12,20 @@
                 <h2 class="text-2xl mb-3"> Email </h2>
                 <h2 class="text-xl"> <%= JSON.stringify(email.email) %></h2>
             </div>
-
-            <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-2xl mb-3"> ที่อยู่ </h2>
-                    <a href="/user" class="px-5 py-2 bg-third mb-3 hover:bg-red-300 duration-300"> บันทึก </a>
-                </div>
+            <form action="/user" method="POST">
+                <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-2xl mb-3"> ที่อยู่ </h2>
+                        <button class="px-5 py-2 bg-third mb-3 hover:bg-red-300 duration-300" type="submit"> บันทึก </button>
+                    </div>
                 <!-- ถ้าไม่มีข้อมูลในฐานข้อมูล -->
-                 <button class="add-button bg-third w-[50%] text-left p-10 max-md:w-[100%] hover:bg-red-300 duration-300"> + Add</button>
-                 <input type="text" class="input-address bg-third border-none w-[40%] hidden max-lg:w-[100%]" placeholder="ป้อนที่อยู่ของคุณ">
+                    <input type="text" class="input-address bg-third border-none w-[40%] max-lg:w-[100%] bg-primary" placeholder="ป้อนที่อยู่ของคุณ" name="addressInput" value="<%= JSON.stringify(address.address) %>">
 
                 <!-- ถ้ามีข้อมูลในฐานข้อมูล -->
-                <h2 class="text-xl hidden"> <%= JSON.stringify(address) %></h2>
+                    <h2 class="text-xl "> </h2>
 
-            </div>
-
+                </div>
+            </form>
             <!-- order part -->
             <h1 class="text-5xl my-5 pl-4"> คำสั่งซื้อ </h1>
             <div class="ml-40 mt-5 py-5 px-5 max-lg:ml-0">
