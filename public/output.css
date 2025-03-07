@@ -587,7 +587,9 @@
   .top-1\/2 {
     top: calc(1/2 * 100%);
   }
-  
+  .left-1\/2 {
+    left: calc(1/2 * 100%);
+  }
   .isolate {
     isolation: isolate;
   }
@@ -611,15 +613,6 @@
   }
   .col-auto {
     grid-column: auto;
-  }
-  .col-span-1 {
-    grid-column: span 1 / span 1;
-  }
-  .col-span-2 {
-    grid-column: span 2 / span 2;
-  }
-  .col-span-3 {
-    grid-column: span 3 / span 3;
   }
   .col-span-1 {
     grid-column: span 1 / span 1;
@@ -725,6 +718,9 @@
   }
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
+  }
+  .mx-8 {
+    margin-inline: calc(var(--spacing) * 8);
   }
   .mx-auto {
     margin-inline: auto;
@@ -905,6 +901,9 @@
   }
   .aspect-square {
     aspect-ratio: 1 / 1;
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
   }
   .h-\[40px\] {
     height: 40px;
@@ -1146,6 +1145,9 @@
   }
   .animate-none {
     animation: none;
+  }
+  .cursor-pointer {
+    cursor: pointer;
   }
   .touch-pinch-zoom {
     --tw-pinch-zoom: pinch-zoom;
@@ -1917,6 +1919,9 @@
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
@@ -2816,7 +2821,6 @@
     height: 85vh;
     position: relative;
     background-image: url(/image/background.png);
-    background-image: url(/image/background.png);
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -2824,7 +2828,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(12, 12, 12, 0);
     background-color: rgba(12, 12, 12, 0.7);
     color: white;
   }
