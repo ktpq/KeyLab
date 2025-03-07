@@ -2739,7 +2739,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(12, 12, 12, 0.7);
+    background-color: rgba(12, 12, 12, 0);
     color: white;
   }
   .text-des {

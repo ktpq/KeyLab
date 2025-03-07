@@ -33,14 +33,14 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/enterEmail', function(req, res){
+router.get('/enterEmail', function (req, res) {
     res.render('enterEmail');
 });
 
-router.get('/enterCode', function(req, res){
+router.get('/enterCode', function (req, res) {
     res.render('enterCode', { email: req.session.email, password: req.session.password });
 });
-router.get('/buy', function(req, res){
+router.get('/buy', function (req, res) {
     res.render('buy');
 });
 
@@ -51,47 +51,77 @@ router.get('/buy', function(req, res){
 router.get('/products', async (req, res) => {
     try {
         const db = await openDb();
-        const keycaps = await db.all("SELECT * FROM products WHERE category = 'keycap'");
-        const switches = await db.all("SELECT * FROM products WHERE category = 'switch'");
-        const cases = await db.all("SELECT * FROM products WHERE category = 'case'");
-        const pcb = await db.all("SELECT * FROM products WHERE category = 'pcb'");
-        const plates = await db.all("SELECT * FROM products WHERE category = 'Plates'");
+        let sortBy = req.query.sort || '';
 
-        console.log("Keycaps:", keycaps);
-        console.log("Switches:", switches);
-        console.log("Cases:", cases);
-        console.log("PCB:", pcb);
-        console.log("Plates:", plates);
+        const sortOptions = {
+            lowtohigh: "ORDER BY price ASC",
+            hightolow: "ORDER BY price DESC",
+            atoz: "ORDER BY name COLLATE NOCASE ASC",
+            ztoa: "ORDER BY name COLLATE NOCASE DESC",
+            oldtonew: "ORDER BY prod_id ASC",
+            newtoold: "ORDER BY prod_id DESC"
+        };
 
-        res.render('products', { keycaps, switches, cases, pcb, plates });
+        let orderClause = sortOptions[sortBy] || "";
+
+        const keycaps = await db.all(`SELECT * FROM products WHERE category = 'keycap' ${orderClause}`);
+        const switches = await db.all(`SELECT * FROM products WHERE category = 'switch' ${orderClause}`);
+        const cases = await db.all(`SELECT * FROM products WHERE category = 'case' ${orderClause}`);
+        const pcb = await db.all(`SELECT * FROM products WHERE category = 'pcb' ${orderClause}`);
+        const plates = await db.all(`SELECT * FROM products WHERE category = 'Plates' ${orderClause}`);
+
+        res.render('products', { keycaps, switches, cases, pcb, plates, sortBy });
     } catch (error) {
         console.error(error);
         res.status(500).send("Database Error");
     }
 });
 
-router.get('/pbproducts', async (req, res) => {
+router.get('/pbproduct', async (req, res) => {
     try {
         const db = await openDb();
-        const pre_built = await db.all("SELECT * FROM products WHERE category = 'pre-built'");
+        let sortBy = req.query.sort || '';
 
-        console.log("pre-built:", pre_built);
+        const sortOptions = {
+            lowtohigh: "ORDER BY price ASC",
+            hightolow: "ORDER BY price DESC",
+            atoz: "ORDER BY name COLLATE NOCASE ASC",
+            ztoa: "ORDER BY name COLLATE NOCASE DESC",
+            oldtonew: "ORDER BY prod_id ASC",
+            newtoold: "ORDER BY prod_id DESC"
+        };
 
-        res.render('pbproducts', { pre_built });
+        let orderClause = sortOptions[sortBy] || "";
+
+        const pre_built = await db.all(`SELECT * FROM products WHERE category = 'pre-built' ${orderClause}`);
+
+        res.render('pbproducts', { pre_built, sortBy });
     } catch (error) {
         console.error(error);
         res.status(500).send("Database Error");
     }
+
 });
 
 router.get('/kitsproduct', async (req, res) => {
     try {
         const db = await openDb();
-        const keyboard_kits = await db.all("SELECT * FROM products WHERE category = 'kit'");
+        let sortBy = req.query.sort || '';
 
-        console.log("kit:", keyboard_kits);
+        const sortOptions = {
+            lowtohigh: "ORDER BY price ASC",
+            hightolow: "ORDER BY price DESC",
+            atoz: "ORDER BY name COLLATE NOCASE ASC",
+            ztoa: "ORDER BY name COLLATE NOCASE DESC",
+            oldtonew: "ORDER BY prod_id ASC",
+            newtoold: "ORDER BY prod_id DESC"
+        };
 
-        res.render('kitsproduct', { keyboard_kits });
+        let orderClause = sortOptions[sortBy] || "";
+
+        const keyboard_kits = await db.all(`SELECT * FROM products WHERE category = 'kit' ${orderClause}`);
+
+        res.render('kitsproduct', { keyboard_kits , sortBy });
     } catch (error) {
         console.error(error);
         res.status(500).send("Database Error");
@@ -104,7 +134,7 @@ router.get('/buy/:id', async (req, res) => {
     try {
         const db = await openDb();
         const product = await db.all("SELECT * FROM products WHERE prod_id = ?", [productId]);
-        const relatedProducts = await db.all("SELECT * FROM products WHERE prod_id != ? LIMIT 4", [productId]);
+        const relatedProducts = await db.all("SELECT * FROM products ORDER BY RANDOM() LIMIT 4");
 
         console.log("Products:", product, relatedProducts);
 
@@ -115,21 +145,21 @@ router.get('/buy/:id', async (req, res) => {
     }
 });
 
-router.get('/order', function(req,res){
+router.get('/order', function (req, res) {
     res.render('order')
 })
-router.get('/manuser', function(req,res){
+router.get('/manuser', function (req, res) {
     res.render('manuser')
 })
-router.get('/payment', function(req,res){
+router.get('/payment', function (req, res) {
     res.render('payment')
 })
 
-router.get('/cart', function(req,res){
+router.get('/cart', function (req, res) {
     res.render('cart')
 })
 
-router.get('/user', function(req,res){
+router.get('/user', function (req, res) {
     res.render('user')
 })
 
