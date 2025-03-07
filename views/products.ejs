@@ -4,14 +4,13 @@
         <%- include('partials/nav')%>
             <section class="my-5">
                 <h1 class="text-5xl font-bold  text-center my-8 text-white">
-                    คีย์บอร์ด
+                    สินค้าของเรา
                 </h1>
-                <%- include('partials/sort')%>
+                <%- include('partials/sort', { sortBy: sortBy, isProductPage: true }) %>
 
-                    <!-- Dropdown Menu -->
+
                     <!-- Tab Content -->
                     <div id="tab1" class="tab-content block">
-                        <p class="text-center text-white">Keycaps section</p>
 
                         <!-- Add Keycaps products here -->
 
@@ -47,7 +46,6 @@
                     </div>
 
                     <div id="tab2" class="tab-content hidden">
-                        <p class="text-center text-white">Switches section</p>
 
                         <!-- Add Switches products here -->
 
@@ -83,7 +81,6 @@
                     </div>
 
                     <div id="tab3" class="tab-content hidden">
-                        <p class="text-center text-white">Case section</p>
 
                         <!-- Add Case products here -->
 
@@ -119,7 +116,6 @@
                     </div>
 
                     <div id="tab4" class="tab-content hidden">
-                        <p class="text-center text-white">PCB section</p>
 
                         <!-- Add PCB products here -->
 
@@ -155,7 +151,6 @@
                     </div>
 
                     <div id="tab5" class="tab-content hidden">
-                        <p class="text-center text-white">Plate section</p>
 
                         <!-- Add Plate products here -->
 
@@ -194,16 +189,43 @@
             </section>
     </body>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let savedTab = localStorage.getItem("selectedTab") || "tab1";
+            switchTab(savedTab);
+            document.getElementById("tabDropdown").value = savedTab;
+        });
+
         function switchTab(tabName) {
-            // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.add('hidden');
                 content.classList.remove('block');
             });
 
-            // Show the selected tab
             document.getElementById(tabName).classList.remove('hidden');
             document.getElementById(tabName).classList.add('block');
+
+            localStorage.setItem("selectedTab", tabName);
         }
+
+        function sortProducts() {
+            let sortValue = document.getElementById("sortDropdown").value;
+            let currentUrl = new URL(window.location.href);
+
+            if (sortValue) {
+                currentUrl.searchParams.set("sort", sortValue);
+            }
+
+            let activeTab = localStorage.getItem("selectedTab") || "tab1";
+            currentUrl.searchParams.set("tab", activeTab);
+
+            window.location.href = currentUrl.toString();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let urlParams = new URLSearchParams(window.location.search);
+            let savedTab = urlParams.get("tab") || localStorage.getItem("selectedTab") || "tab1";
+            switchTab(savedTab);
+        });
+
     </script>
     <%- include('partials/footHtml')%>

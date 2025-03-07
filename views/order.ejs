@@ -3,79 +3,141 @@
 <body class="bg-primary text-white text-primary">
     <%- include('partials/nav')%>
     <h3 class="text-5xl ms-20">คำสั่งซื้อ</h3>
-    <div class="grid grid-cols-6 P-10 text-center p-5">
-        <div class="underlinecl text-3xl">
+    <div class="grid grid-cols-12 P-10 text-center p-5">
+        <div class="underlinecl col-span-2 text-3xl">
             <h3>รหัส</h3>
         </div>
-        <div class="underlinecl text-3xl">
+        <div class="underlinecl col-span-2 text-3xl">
             <h3>วันที่</h3>
         </div>
-        <div class="underlinecl text-3xl">
+        <div class="underlinecl col-span-1 text-3xl">
             <h3>สถานะ</h3>
         </div>
-        <div class="underlinecl text-3xl">
+        <div class="underlinecl col-span-2 text-3xl">
             <h3>ราคา</h3>
         </div>
-        <div class="underlinecl text-3xl">
+        <div class="underlinecl col-span-2 text-3xl">
             <h3>ที่อยู่จัดส่ง</h3>
         </div>
-        <div class="underlinecl text-3xl">
+        <div class="underlinecl col-span-3 text-3xl">
             <h3>แก้ไข</h3>
         </div>
-        
-        <div class="underlinedes">
+
+    <!-- แก้ไข ข้อมูล ข้างล่างนี้ -->
+        <div class="underlinedes col-span-2">
             <h3>001</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>1/3/2025</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-1">
             <h3 class="bg-red-700">ยกเลิก</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>100฿</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>400/108 sadasd xacxzxczcss</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-3">
             <select class="text-black">
-                <option>แก้ไข</option>
-                <option>ลบข้อมูล</option>
+                <option value=""> แก้ไข </option>
+                <option value="รอยืนยัน">รอยืนยัน</option>
+                <option value="กำลังผลิต">กำลังผลิต</option>
+                <option value="สำเร็จ">สำเร็จ</option>
+                <option value="ยกเลิก">ยกเลิก</option>
+                <option value="ลบข้อมูล">ลบข้อมูล</option>
             </select>
             <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
+            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>001</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>1/3/2025</h3>
         </div>
-        <div class="underlinedes">
-            <h3 class="bg-yellow-700">pending</h3>
+        <div class="underlinedes col-span-1">
+            <h3 class="bg-yellow-700">รอการยืนยัน</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>100฿</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>400/108 sadasd xacxzxczcss</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-3">
             <select class="text-black">
-                <option>แก้ไข</option>
-                <option>ลบข้อมูล</option>
+                <option value=""> แก้ไข </option>
+                <option value="รอยืนยัน">รอยืนยัน</option>
+                <option value="กำลังผลิต">กำลังผลิต</option>
+                <option value="สำเร็จ">สำเร็จ</option>
+                <option value="ยกเลิก">ยกเลิก</option>
+                <option value="ลบข้อมูล">ลบข้อมูล</option>
             </select>
             <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
+            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>001</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-2">
             <h3>1/3/2025</h3>
         </div>
-        <div class="underlinedes">
+        <div class="underlinedes col-span-1">
+            <h3 class="bg-blue-700">กำลังผลิต</h3>
+        </div>
+        <div class="underlinedes col-span-2">
+            <h3>100฿</h3>
+        </div>
+        <div class="underlinedes col-span-2">
+            <h3>400/108 sadasd xacxzxczcss</h3>
+        </div>
+        <div class="underlinedes col-span-3">
+            <select class="text-black">
+                <option>สำเร็จ</option>
+                <option>รอการยืนยัน</option>
+                <option>กำลังผลิต</option>
+                <option>ยกเลิก</option>
+            </select>
+            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
+            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
+        </div>
+        <div class="underlinedes col-span-2">
+            <h3>001</h3>
+        </div>
+        <div class="underlinedes col-span-2">
+            <h3>1/3/2025</h3>
+        </div>
+        <div class="underlinedes col-span-1">
             <h3 class="bg-green-700">สำเร็จ</h3>
         </div>
+        <div class="underlinedes col-span-2">
+            <h3>100฿</h3>
+        </div>
+        <div class="underlinedes col-span-2">
+            <h3>400/108 sadasd xacxzxczcss</h3>
+        </div>
+        <div class="underlinedes col-span-3">
+            <select class="text-black">
+                <option value=""> แก้ไข </option>
+                <option value="รอยืนยัน">รอยืนยัน</option>
+                <option value="กำลังผลิต">กำลังผลิต</option>
+                <option value="สำเร็จ">สำเร็จ</option>
+                <option value="ยกเลิก">ยกเลิก</option>
+                <option value="ลบข้อมูล">ลบข้อมูล</option>
+            </select>
+            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
+        </div>
+        <div class="underlinedes">
+            <h3>001</h3>
+        </div>
+        <div class="underlinedes">
+            <h3>1/3/2025</h3>
+        </div>
+        <div class="underlinedes">
+            <h3 class="bg-red-700">รอยืนยัน</h3>
+        </div>
         <div class="underlinedes">
             <h3>100฿</h3>
         </div>
@@ -84,13 +146,16 @@
         </div>
         <div class="underlinedes">
             <select class="text-black">
-                <option>แก้ไข</option>
-                <option>ลบข้อมูล</option>
+                <option value=""> แก้ไข </option>
+                <option value="รอยืนยัน">รอยืนยัน</option>
+                <option value="กำลังผลิต">กำลังผลิต</option>
+                <option value="สำเร็จ">สำเร็จ</option>
+                <option value="ยกเลิก">ยกเลิก</option>
+                <option value="ลบข้อมูล">ลบข้อมูล</option>
             </select>
             <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
+            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
         </div>
-    
-        
     </div>
     
 </body>

@@ -1,21 +1,12 @@
 <%- include('partials/headHtml')%>
     <body class="bg-primary text-primary">
 
-        <div id="popup1" class="bg-white border-gray-300 border-8 p-5 w-[35vw]">
-            <h1 class="text-3xl font-bold"> <span class="text-3xl text-gray-300"> | </span>Order details </h1>
-            <div class="flex">
-                <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" width="100" class="border border-black">
-                <div class="w-[70%] border border-black pl-5 pt-3">
-                    <p class="font-bold"> Keychron switch </p>
-                    <p> switch: red </p>
-                </div>
-                <p class="border border-black"> Price : 900baht</p>
-            </div>
-        </div>
+        
+        
         
         <%- include('partials/navUser')%>
         <section class="text-white w-[75vw] mx-auto my-5 max-lg:w-[100vw]">
-            <h1 class="text-5xl pl-4"> Profile </h1>
+            <h1 class="text-5xl pl-4"> ข้อมูลส่วนตัว </h1>
 
             <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
                 <h2 class="text-2xl mb-3"> Email </h2>
@@ -24,8 +15,8 @@
 
             <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl mb-3"> Address </h2>
-                    <a href="/user" class="px-5 py-2 bg-third mb-3 hover:bg-red-300 duration-300"> Save </a>
+                    <h2 class="text-2xl mb-3"> ที่อยู่ </h2>
+                    <a href="/user" class="px-5 py-2 bg-third mb-3 hover:bg-red-300 duration-300"> บันทึก </a>
                 </div>
                 <!-- ถ้าไม่มีข้อมูลในฐานข้อมูล -->
                  <button class="add-button bg-third w-[50%] text-left p-10 max-md:w-[100%] hover:bg-red-300 duration-300"> + Add</button>
@@ -37,7 +28,7 @@
             </div>
 
             <!-- order part -->
-            <h1 class="text-5xl my-5 pl-4"> Order </h1>
+            <h1 class="text-5xl my-5 pl-4"> คำสั่งซื้อ </h1>
             <div class="ml-40 mt-5 py-5 px-5 max-lg:ml-0">
                 <table class="border-b w-[100%]">
 
@@ -56,7 +47,44 @@
                         <td class="text-center text-xl"> Complete </td>
                         <!-- ใน popovertarget กับ id ให้เอา orderID มาใส่ตอนดึงข้อมูล เพื่อให้มันเปิดได้ถูกหน้าต่าง -->
                         <td class="text-center text-xl"> <button class="border p-5 bg-white text-black" popovertarget="popup1"> ดูรายละเอียด </button> </td>
+
+                        <div id="popup1" class="bg-white border-gray-300 border-8 p-5 w-[35vw] fixed top-1/2 left-1/2 
+                        translate-x-[-50%] translate-y-[-50%] shadow-lg max-lg:w-[80vw]" popover>
+                            <h1 class="text-3xl font-bold">
+                                <span class="text-3xl text-gray-300"> | </span> Order details
+                            </h1>
                         
+                            <section class="max-h-[40vh] overflow-y-auto ml-4 mt-4">
+
+                                <div class="flex my-4 p-2 shadow-md">
+                                    <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" width="100">
+                                    <div class="w-[60%] pl-5 pt-3">
+                                        <p class="font-bold"> Keychron switch </p>
+                                        <p> switch: red </p>
+                                    </div>
+                                    <p class="flex flex-col justify-end font-bold"> Price 900 baht</p>
+                                </div>
+
+                                <div class="flex my-4 p-2 shadow-md">
+                                    <img src="https://m.media-amazon.com/images/I/6168x4pbvbL.jpg" alt="" width="100">
+                                    <div class="w-[60%] pl-5 pt-3">
+                                        <p class="font-bold"> Keychron switch </p>
+                                        <p> switch: red </p>
+                                    </div>
+                                    <p class="flex flex-col justify-end font-bold"> Price 900 baht</p>
+                                </div>
+                                
+
+                                
+                
+                                <div class="flex justify-end">
+                                    <p class="bg-yellow-400 p-2 w-[20%] text-center font-bold"> รอยืนยัน </p>
+                                    <!-- <p class="bg-orange-400 p-2 w-[20%] text-center font-bold"> กำลังผลิต </p>
+                                    <p class="bg-green-400 p-2 w-[20%] text-center font-bold"> สำเร็จ </p>
+                                    <p class="bg-red-400 p-2 w-[20%] text-center font-bold"> ยกเลิก </p> -->
+                                </div>
+                            </section>
+                        </div>
                         <!-- end of comment -->
                     </tr>
 
