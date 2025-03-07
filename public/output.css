@@ -578,6 +578,9 @@
   .sticky {
     position: sticky;
   }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
   .end-1 {
     inset-inline-end: calc(var(--spacing) * 1);
   }
@@ -755,6 +758,9 @@
   .ms-20 {
     margin-inline-start: calc(var(--spacing) * 20);
   }
+  .ms-24 {
+    margin-inline-start: calc(var(--spacing) * 24);
+  }
   .ms-25 {
     margin-inline-start: calc(var(--spacing) * 25);
   }
@@ -802,6 +808,9 @@
   }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
+  }
+  .ml-0 {
+    margin-left: calc(var(--spacing) * 0);
   }
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
@@ -908,8 +917,14 @@
   .h-\[450px\] {
     height: 450px;
   }
+  .h-\[900px\] {
+    height: 900px;
+  }
   .h-fit {
     height: fit-content;
+  }
+  .h-full {
+    height: 100%;
   }
   .h-screen {
     height: 100vh;
@@ -929,6 +944,27 @@
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
+  .w-\[20\%\] {
+    width: 20%;
+  }
+  .w-\[25\%\] {
+    width: 25%;
+  }
+  .w-\[30px\] {
+    width: 30px;
+  }
+  .w-\[40\%\] {
+    width: 40%;
+  }
+  .w-\[60\%\] {
+    width: 60%;
+  }
+  .w-\[75\%\] {
+    width: 75%;
+  }
+  .w-\[80\%\] {
+    width: 80%;
+  }
   .w-\[8vw\] {
     width: 8vw;
   }
@@ -938,42 +974,17 @@
   .w-\[11\%\] {
     width: 11%;
   }
-  .w-\[20\%\] {
-    width: 20%;
-  }
-  .w-\[25\%\] {
-    width: 25%;
-  }
   .w-\[30\%\] {
     width: 30%;
-  }
-  .w-\[30px\] {
-    width: 30px;
   }
   .w-\[35vw\] {
     width: 35vw;
   }
-  .w-\[40\%\] {
-    width: 40%;
-  }
   .w-\[50\%\] {
     width: 50%;
   }
-  .w-\[70\%\] {
-    width: 70%;
-
-  .w-\[60\%\] {
-    width: 60%;
-
-  }
-  .w-\[75\%\] {
-    width: 75%;
-  }
   .w-\[75vw\] {
     width: 75vw;
-  }
-  .w-\[80\%\] {
-    width: 80%;
   }
   .w-\[90vw\] {
     width: 90vw;
@@ -989,6 +1000,9 @@
   }
   .w-screen {
     width: 100vw;
+  }
+  .max-w-4xl {
+    max-width: var(--container-4xl);
   }
   .max-w-none {
     max-width: none;
@@ -1247,6 +1261,9 @@
   .auto-rows-min {
     grid-auto-rows: min-content;
   }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1414,6 +1431,9 @@
   }
   .justify-items-stretch {
     justify-items: stretch;
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
   }
   .gap-5 {
     gap: calc(var(--spacing) * 5);
@@ -1656,6 +1676,9 @@
   .border-gray-500 {
     border-color: var(--color-gray-500);
   }
+  .border-gray-700 {
+    border-color: var(--color-gray-700);
+  }
   .border-b-neutral-600 {
     border-bottom-color: var(--color-neutral-600);
   }
@@ -1674,7 +1697,9 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
-
+  .bg-black {
+    background-color: var(--color-black);
+  }
   .bg-blue-700 {
     background-color: var(--color-blue-700);
   }
@@ -2045,6 +2070,10 @@
     --tw-font-weight: var(--font-weight-extrabold);
     font-weight: var(--font-weight-extrabold);
   }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
   .text-balance {
     text-wrap: balance;
   }
@@ -2123,6 +2152,12 @@
   }
   .text-gray-300 {
     color: var(--color-gray-300);
+  }
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
   }
   .text-orange-400 {
     color: var(--color-orange-400);
@@ -2595,6 +2630,13 @@
       }
     }
   }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+  }
   .hover\:text-yellow-300 {
     &:hover {
       @media (hover: hover) {
@@ -2703,6 +2745,11 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  .md\:grid-cols-3 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
   .lg\:hidden {
     @media (width >= 64rem) {
       display: none;
@@ -2716,10 +2763,10 @@
 }
 @layer utilities {
   .bg-primary {
-    background-color: #202020;
+    background-color: #1b1b1b;
   }
   .bg-secondary {
-    background-color: #777777;
+    background-color: #ffffff;
   }
   .wrap {
     position: relative;
@@ -2809,7 +2856,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(12, 12, 12, 0.7);
     color: white;
   }
   .text-des {
