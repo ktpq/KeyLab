@@ -346,11 +346,10 @@
                 // Here you would add logic to add the selected components to the cart
                 console.log('Adding to cart:', { layout, caseId, pcbId, plateId, switchId, keycapId });
                 const data = [caseId, pcbId, plateId, switchId, keycapId];
-                console.log("data " + data)
-                data.forEach((item) =>{
-                    const url = `/addToCart?prodId=${item}&quantity=1`;
-                    window.location.href = url;
-                })
+                const dataString = encodeURIComponent(JSON.stringify(data));
+
+                const url = `/cartCustom?data=${dataString}`;
+                window.location.href = url;
                 // You would typically send this data to your server or store in localStorage
             });
             
