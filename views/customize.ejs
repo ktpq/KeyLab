@@ -206,6 +206,7 @@
             fetch(`/getParts?layoutId=${layoutId}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log("Server response:", data);
                     updateOptions("caseContainer", data.cases);
                     updateOptions("pcbContainer", data.pcbs);
                     updateOptions("plateContainer", data.plates);
@@ -215,30 +216,33 @@
 
         function updateOptions(containerId, items) {
             const container = document.getElementById(containerId);
-            container.innerHTML = "";
+            const clonedContainer = container.cloneNode(false);
+            container.parentNode.replaceChild(clonedContainer, container);
+            
+            const newContainer = document.getElementById(containerId);
+            newContainer.innerHTML = "";
 
             if (!items || items.length === 0) {
-                container.innerHTML = "<option value=''>ไม่มีตัวเลือก</option>";
+                newContainer.innerHTML = "<option value=''>ไม่มีตัวเลือก</option>";
                 return;
             }
 
             const defaultOption = document.createElement("option");
             defaultOption.textContent = "เลือกตัวเลือก";
             defaultOption.value = "";
-            container.appendChild(defaultOption);
+            newContainer.appendChild(defaultOption);
 
             items.forEach(item => {
                 const option = document.createElement("option");
                 option.textContent = item.name;
-                option.value = item.id;
+                option.value = item.prod_id;
                 option.setAttribute("data-img1", item.img1);
-                container.appendChild(option);
+                newContainer.appendChild(option);
             });
 
-            container.addEventListener("change", function () {
+            newContainer.addEventListener("change", function() {
                 updateSelectedImage(containerId);
 
-                // Update summary element based on the container ID
                 const selectedText = this.options[this.selectedIndex].text;
                 if (containerId === "caseContainer") {
                     document.getElementById("selectedCase").textContent = selectedText !== "เลือกตัวเลือก" ? selectedText : "-";
@@ -252,7 +256,10 @@
 
         function updateSelectedImage(containerId) {
             const select = document.getElementById(containerId);
-            const img1 = select.options[select.selectedIndex].getAttribute("data-img1");
+            if (!select || select.selectedIndex < 0) return;
+            
+            const option = select.options[select.selectedIndex];
+            const img1 = option ? option.getAttribute("data-img1") : null;
             const imageElement = document.getElementById(`${containerId}-img`);
             const placeholderElement = document.getElementById(`${containerId}-placeholder`);
 
@@ -265,44 +272,37 @@
                 placeholderElement.classList.remove("hidden");
             }
 
-            // Update summary for switches and keycaps
             if (containerId === "switchDropdown" || containerId === "keycapDropdown") {
-                const selectedText = select.options[select.selectedIndex].text;
+                const selectedText = option ? option.text : "";
                 const summaryElementId = containerId === "switchDropdown" ? "selectedSwitch" : "selectedKeycap";
-                document.getElementById(summaryElementId).textContent = selectedText !== "เลือกตัวเลือก" && selectedText !== "เลือกสวิตช์" && selectedText !== "เลือกคีย์แคป" ? selectedText : "-";
+                document.getElementById(summaryElementId).textContent = 
+                    selectedText !== "เลือกตัวเลือก" && 
+                    selectedText !== "เลือกสวิตช์" && 
+                    selectedText !== "เลือกคีย์แคป" ? selectedText : "-";
             }
         }
 
-        // Initialize event listeners for all dropdowns
         document.addEventListener('DOMContentLoaded', function () {
-            // Add event listeners for all dropdowns
-            const dropdowns = ['caseContainer', 'pcbContainer', 'plateContainer', 'switchDropdown', 'keycapDropdown'];
-
-            dropdowns.forEach(function (dropdownId) {
+            const staticDropdowns = ['switchDropdown', 'keycapDropdown'];
+            
+            staticDropdowns.forEach(function(dropdownId) {
                 const dropdown = document.getElementById(dropdownId);
                 if (dropdown) {
-                    dropdown.addEventListener('change', function () {
+                    dropdown.addEventListener('change', function() {
                         updateSelectedImage(dropdownId);
 
-                        // Update summary based on dropdown type
                         const selectedText = this.options[this.selectedIndex].text;
                         let summaryId;
-
-                        if (dropdownId === 'caseContainer') {
-                            summaryId = 'selectedCase';
-                        } else if (dropdownId === 'pcbContainer') {
-                            summaryId = 'selectedPCB';
-                        } else if (dropdownId === 'plateContainer') {
-                            summaryId = 'selectedPlate';
-                        } else if (dropdownId === 'switchDropdown') {
+                        
+                        if (dropdownId === 'switchDropdown') {
                             summaryId = 'selectedSwitch';
                         } else if (dropdownId === 'keycapDropdown') {
                             summaryId = 'selectedKeycap';
                         }
-
+                        
                         if (summaryId) {
-                            const isDefaultOption = selectedText === "เลือกตัวเลือก" ||
-                                selectedText === "เลือกสวิตช์" ||
+                            const isDefaultOption = 
+                                selectedText === "เลือกสวิตช์" || 
                                 selectedText === "เลือกคีย์แคป";
                             document.getElementById(summaryId).textContent = !isDefaultOption ? selectedText : "-";
                         }
@@ -310,24 +310,47 @@
                 }
             });
 
-            // Add to cart button functionality
-            document.getElementById('addToCartBtn').addEventListener('click', function () {
+            document.getElementById('addToCartBtn').addEventListener('click', function() {
                 const layout = document.getElementById('layoutDropdown').value;
                 const caseId = document.getElementById('caseContainer').value;
                 const pcbId = document.getElementById('pcbContainer').value;
                 const plateId = document.getElementById('plateContainer').value;
                 const switchId = document.getElementById('switchDropdown').value;
                 const keycapId = document.getElementById('keycapDropdown').value;
+                
+                console.log('Selected values:', { 
+                    layout, 
+                    caseId, 
+                    pcbId, 
+                    plateId, 
+                    switchId, 
+                    keycapId 
+                });
 
                 if (!layout || !caseId || !pcbId || !plateId || !switchId || !keycapId) {
                     alert('กรุณาเลือกทุกส่วนประกอบก่อนเพิ่มลงในตะกร้า');
                     return;
                 }
 
-                // Here you would add logic to add the selected components to the cart
                 console.log('Adding to cart:', { layout, caseId, pcbId, plateId, switchId, keycapId });
-                // You would typically send this data to your server or store in localStorage
                 alert('เพิ่มลงในตะกร้าเรียบร้อยแล้ว!');
+            });
+            
+            document.getElementById('wishlistBtn').addEventListener('click', function() {
+                const layout = document.getElementById('layoutDropdown').value;
+                const caseId = document.getElementById('caseContainer').value;
+                const pcbId = document.getElementById('pcbContainer').value;
+                const plateId = document.getElementById('plateContainer').value;
+                const switchId = document.getElementById('switchDropdown').value;
+                const keycapId = document.getElementById('keycapDropdown').value;
+                
+                if (!layout || !caseId || !pcbId || !plateId || !switchId || !keycapId) {
+                    alert('กรุณาเลือกทุกส่วนประกอบก่อนเพิ่มลงรายการโปรด');
+                    return;
+                }
+                
+                console.log('Adding to wishlist:', { layout, caseId, pcbId, plateId, switchId, keycapId });
+                alert('เพิ่มลงรายการโปรดเรียบร้อยแล้ว!');
             });
         });
     </script>
