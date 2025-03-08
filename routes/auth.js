@@ -84,23 +84,7 @@ router.post('/enterCode', async function (req, res) {
         return res.status(500).json({ error: "Database error" });
     }
 });
-// router.post('/saveAddress', async (req, res) => {
-//     const db = await openDb();
-//     const address = req.body.addressInput;
-//     console.log(address);
-//     const userSession = req.session.userId;  // แก้ไขตรงนี้
-//     console.log(userSession)
-//     const sql = "UPDATE Users SET address = ? WHERE user_id = ?;";
 
-//     db.run(sql, [address, userSession], function(err) {
-//         if (err) {
-//             console.log(err.message)
-//         }
-        
-//         console.log(`A row has been updated for user_id ${userSession}`);
-//         res.redirect('/user')
-//     });
-// });
 router.post('/user', async (req, res) => {
     const db = await openDb();
     const address = req.body.addressInput;
@@ -131,33 +115,6 @@ router.post('/user', async (req, res) => {
     res.redirect('/user'); 
 });
 
-// router.post('/saveAddress', async (req, res) => {
-//     const db = await openDb();
-//     const address = req.body.addressInput;
-//     console.log(address)
-//     const userSession = req.session.userId;
-//     const sql = "UPDATE Users SET address = ? WHERE user_id = ?;";
-//     db.run(sql, [address, userSession], function(err) {
-//         if (err) {
-//             return res.status(500).json({ error: err.message });
-//         }
-//         res.status(200).json({ message: 'Data submitted successfully' });
-//     return res.redirect('/user');
-//     });
-// });
-// router.post('/user', async (req, res) => {
-//     const db = await openDb();
-//     const address = req.body.addressInput;
-//     const sql = "INSERT INTO Users (address) VALUES (?)";
-
-//     db.run(sql, [address], function(err) {
-//         if (err) {
-//             return console.error(err.message);
-//         }
-//         console.log(`A row has been inserted with rowid ${this.lastID}`);
-//         res.redirect('/');
-//     });
-// });
 router.get('/logout', (req, res) => {
     req.session.destroy((err) => {
       if (err) {

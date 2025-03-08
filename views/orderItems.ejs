@@ -1,0 +1,28 @@
+<%- include('partials/headHtml')%>
+
+    <body class="bg-primary">
+        <%- include('partials/navUser')%>
+        
+            
+        
+
+            <div id="popup1" class="bg-white border-gray-300 border-8 p-5 w-[35vw] fixed top-1/2 left-1/2 
+                        translate-x-[-50%] translate-y-[-50%] shadow-lg max-lg:w-[80vw] !important">
+                <h1 class="text-3xl font-bold">
+                    <span class="text-3xl text-gray-300"> | </span> Order details
+                </h1>
+
+                <section class="max-h-[40vh] overflow-y-auto ml-4 mt-4">
+                    <% items.forEach(item => { %>
+                    <div class="flex my-4 p-2 shadow-md">
+                        <img src="<%= item.img1 %>" alt="" width="100">
+                        <div class="w-[60%] pl-5 pt-3">
+                            <p class="font-bold"> <%= item.name %> * <%= item.quantity %></p>
+                        </div>
+                        <p class="flex flex-col justify-end font-bold"> Price <%= item.price %> baht</p>
+                    </div>
+                    <% })%>
+                </section>
+            </div>
+    </body>
+    <%- include('partials/footHtml')%>

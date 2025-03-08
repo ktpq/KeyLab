@@ -1,7 +1,8 @@
 <%- include('partials/headHtml')%>
 
 <body class="bg-primary text-white text-primary">
-    <%- include('partials/nav')%>
+    <%- include('partials/navAdmin')%>
+    
     <h3 class="text-5xl ms-20 mt-10">บัญชีผู้ใช้งาน</h3>
     <div class="grid grid-cols-4 P-10 text-center p-5">
 
@@ -9,7 +10,7 @@
             <h3>อีเมล</h3>
         </div>
         <div class="underlinecl text-3xl">
-            <h3>คำสั่งซื้อ</h3>
+            <h3>จำนวนคำสั่งซื้อ</h3>
         </div>
         <div class="underlinecl text-3xl">
             <h3>ที่อยู่จัดส่ง</h3>
@@ -19,72 +20,20 @@
         </div>
  
         <!-- แก้ไข ข้อมูล ข้างล่างนี้ -->
+        <% allUser.forEach(user => { %>
         <div class="underlinedes">
-            <h3>66070041@kmitl.ac.th</h3>
+            <h3><%= user.email %></h3>
         </div>
         <div class="underlinedes">
-            <h3>26sdklj</h3>
+            <h3><%= user.order_count %></h3>
         </div>
         <div class="underlinedes">
-            <h3>400/108 sadasd xacxzxczcss</h3>
+            <h3><%= user.address %></h3>
         </div>
         <div class="underlinedes">
-            <select class="text-black">
-                <option>แก้ไข</option>
-                <option>ลบข้อมูล</option>
-            </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
+            <a class="bg-white text-black w-[20%] h-[100%] px-5" href="/deleteUser?id=<%= user.user_id %>">ลบข้อมูล</a>
         </div>
-        <div class="underlinedes">
-            <h3>66070041@kmitl.ac.th</h3>
-        </div>
-        <div class="underlinedes">
-            <h3>26sdklj</h3>
-        </div>
-        <div class="underlinedes">
-            <h3>400/108 sadasd xacxzxczcss</h3>
-        </div>
-        <div class="underlinedes">
-            <select class="text-black">
-                <option>แก้ไข</option>
-                <option>ลบข้อมูล</option>
-            </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
-        </div>
-        <div class="underlinedes">
-            <h3>66070041@kmitl.ac.th</h3>
-        </div>
-        <div class="underlinedes">
-            <h3>26sdklj</h3>
-        </div>
-        <div class="underlinedes">
-            <h3>400/108 sadasd xacxzxczcss</h3>
-        </div>
-        <div class="underlinedes">
-            <select class="text-black">
-                <option>แก้ไข</option>
-                <option>ลบข้อมูล</option>
-            </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
-        </div>
-        <div class="underlinedes">
-            <h3>66070041@kmitl.ac.th</h3>
-        </div>
-        <div class="underlinedes">
-            <h3>26sdklj</h3>
-        </div>
-        <div class="underlinedes">
-            <h3>400/108 sadasd xacxzxczcss</h3>
-        </div>
-        <div class="underlinedes">
-            <select class="text-black">
-                <option>แก้ไข</option>
-                <option>ลบข้อมูล</option>
-            </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
-        </div>
-
-        
+        <% })%>
     </div>
     
 </body>
