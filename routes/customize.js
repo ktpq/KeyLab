@@ -43,11 +43,28 @@ router.get('/wishlist', async (req,res) =>{
     }
 })
 
-router.get('/wishlistPage', async (req,res) =>{
-    if (req.session.userId){
-        res.render('wishlist', {wishlist: req.session.wishlist})
+router.get('/wishlistPage', async (req, res) => {
+    if (!req.session.userId) {
+        return res.redirect('/enterEmail');
     }
-})
+
+    try {
+        const db = await openDb();
+
+        const wishlistIds = req.session.wishlist || [];
+
+        let wishlist = [];
+        if (wishlistIds.length > 0) {
+            const placeholders = wishlistIds.map(() => '?').join(',');
+            wishlist = await db.all(`SELECT * FROM Products WHERE prod_id IN (${placeholders})`, wishlistIds);
+        }
+
+        res.render('wishlist', { wishlist });
+    } catch (error) {
+        console.error("Error fetching wishlist:", error);
+        res.status(500).send("Error loading wishlist.");
+    }
+});
 
 
 module.exports = router;
