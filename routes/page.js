@@ -11,10 +11,6 @@ async function openDb() {
     });
 }
 
-// router.get('/', function(req, res){
-//     res.render('app');
-// });
-
 router.get('/', async (req, res) => {
     try {
         const db = await openDb();
@@ -56,9 +52,6 @@ router.get('/buy', function (req, res) {
     res.render('buy');
 });
 
-// router.get('/products', function(req,res){
-//     res.render('products')
-// })
 
 router.get('/products', async (req, res) => {
     try {
@@ -148,7 +141,7 @@ router.get('/buy/:id', async (req, res) => {
         const product = await db.all("SELECT * FROM products WHERE prod_id = ?", [productId]);
         const relatedProducts = await db.all("SELECT * FROM products ORDER BY RANDOM() LIMIT 4");
 
-        console.log("Products:", product, relatedProducts);
+        // console.log("Products:", product, relatedProducts);
 
         res.render('buyItem', { product, relatedProducts });
     } catch (error) {
@@ -157,24 +150,47 @@ router.get('/buy/:id', async (req, res) => {
     }
 });
 
-router.get('/order', function (req, res) {
-    res.render('order')
-})
-router.get('/manuser', function (req, res) {
-    res.render('manuser')
-})
-router.get('/payment', function (req, res) {
-    res.render('payment')
-})
-
-router.get('/cart', function (req, res) {
-    res.render('cart')
-})
 
 
-router.get('/user', async function (req, res) {
+router.get('/payment', async function (req, res) {
+    if (!req.session.userId) {
+        return res.redirect('/');
+    }
+
+    const cart = req.session.cart || [];
+    const db = await openDb();
+    const data = [];
+
+    await Promise.all(cart.map(async (item) => {
+        const id = item.id;
+        const quantity = item.quantity;
+
+        try {
+            const product = await db.get("SELECT img1, name, price FROM Products WHERE prod_id = ?", [id]);
+
+            if (product) {
+                data.push({
+                    id: id,
+                    img: product.img1 || "", 
+                    name: product.name || "", 
+                    price: product.price || 0, 
+                    quantity: quantity, 
+                    totalPrice: quantity * (product.price || 0) 
+                });
+            }
+        } catch (err) {
+            console.error("Database Error:", err.message);
+        }
+    }));
+    const totalAmount = data.reduce((sum, item) => sum + item.totalPrice, 0);
+    res.render('payment', { data: data, totalAmount });
+})
+
+
+
+router.get('/user', async (req, res) => {
     const userId = req.session.userId
-    console.log(userId)
+    // console.log(userId)
     // ตรวจสอบว่า id ต้องไม่ว่างเปล่าและต้องเป็นตัวเลข
     if (!userId || isNaN(userId)) {
         return res.status(400).json({ error: "Invalid user ID" });
@@ -184,7 +200,8 @@ router.get('/user', async function (req, res) {
         const db = await openDb();
         const email = await db.get("SELECT email FROM Users WHERE user_id = ?", [userId]);
         const address = await db.get("SELECT address FROM Users WHERE user_id = ?", [userId]);
-
+        const orders = await db.all("select * from Orders where user_id = ?", [Number(userId)]);
+        console.log("order" + JSON.stringify(orders))
         const sql = "SELECT * FROM Users WHERE user_id = ?";
         const row = await db.get(sql, [userId]);
 
@@ -193,12 +210,40 @@ router.get('/user', async function (req, res) {
         }
 
         // ส่งข้อมูลไปยังเทมเพลต user
-        res.render('user', { userId, email , address});
+        res.render('user', { userId, email , address, orders});
     } catch (err) {
         console.error("Database error:", err.message);
         res.status(500).json({ error: "Database error" });
     }
 });
+
+router.get('/orderItems', async(req, res)=>{
+    if (req.session.userId){
+            try{
+                const orderId = req.query.orderId;
+                console.log(Number(orderId))
+                console.log(req.session.userId)
+                const db = await openDb();
+                const sql = `SELECT Order_items.price, 
+                                Order_items.quantity, 
+                                Orders.status, 
+                                Order_items.prod_id, 
+                                Products.img1,
+                                Products.name
+                            FROM Order_items
+                            INNER JOIN Orders ON Orders.order_id = Order_items.order_id
+                            INNER JOIN Products ON Order_items.prod_id = Products.prod_id
+                            WHERE Orders.user_id = ? AND Order_items.order_id = ?;`
+                const data = await db.all(sql, [req.session.userId, orderId]);
+                console.log(JSON.stringify(data))
+                res.render('orderItems', {items:data})
+            } catch(err){
+                res.send(err.message)
+            }
+    } else {
+        res.redirect('/')
+    }
+})
 
 module.exports = router;
 

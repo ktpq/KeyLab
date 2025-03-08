@@ -1,131 +1,78 @@
 <%- include('partials/headHtml')%>
 
 <body class="bg-primary text-white text-primary">
-    <%- include('partials/nav')%>
-    <h3 class="text-5xl ms-20 mt-10">บัญชีผู้ใช้งาน</h3>
+    <%- include('partials/navAdmin')%>
+    
+    <h3 class="text-5xl ms-20 mt-10"> คำสั่งซื้อทั้งหมด </h3>
     <div class="grid grid-cols-12 P-10 text-center p-5">
         <div class="underlinecl col-span-2 text-3xl">
-            <h3>รหัส</h3>
+            <h3>รหัสคำสั่งซื้อ</h3>
+        </div>
+        <div class="underlinecl col-span-2 text-3xl">
+            <h3>รหัสลูกค้า</h3>
+        </div>
+        <div class="underlinecl col-span-1 text-3xl">
+            <h3>ราคา</h3>
         </div>
         <div class="underlinecl col-span-2 text-3xl">
             <h3>วันที่</h3>
         </div>
-        <div class="underlinecl col-span-1 text-3xl">
+        <div class="underlinecl col-span-2 text-3xl">
             <h3>สถานะ</h3>
-        </div>
-        <div class="underlinecl col-span-2 text-3xl">
-            <h3>ราคา</h3>
-        </div>
-        <div class="underlinecl col-span-2 text-3xl">
-            <h3>ที่อยู่จัดส่ง</h3>
         </div>
         <div class="underlinecl col-span-3 text-3xl">
             <h3>แก้ไข</h3>
         </div>
-
+        
     <!-- แก้ไข ข้อมูล ข้างล่างนี้ -->
+    <% allOrder.forEach(order => { %>
         <div class="underlinedes col-span-2">
-            <h3>001</h3>
+            <h3><%= order.order_id %></h3>
         </div>
         <div class="underlinedes col-span-2">
-            <h3>1/3/2025</h3>
+            <h3><%= order.user_id %></h3>
         </div>
         <div class="underlinedes col-span-1">
-            <h3 class="bg-red-700">ยกเลิก</h3>
+            <h3><%= order.total_price %></h3>
         </div>
         <div class="underlinedes col-span-2">
-            <h3>100฿</h3>
+            <h3><%= order.order_date %></h3>
         </div>
         <div class="underlinedes col-span-2">
-            <h3>400/108 sadasd xacxzxczcss</h3>
+            <!-- เงื่อนไขสำหรับการแสดงสีของสถานะ -->
+            <h3 class="<%= 
+                order.status === 'สำเร็จ' ? 'bg-green-700' : 
+                order.status === 'รอยืนยัน' ? 'bg-yellow-600' : 
+                order.status === 'กำลังผลิต' ? 'bg-blue-700' : 
+                order.status === 'ยกเลิก' ? 'bg-red-700' : '' %>">
+                <%= order.status %>
+            </h3>
         </div>
         <div class="underlinedes col-span-3">
-            <select class="text-black">
-                <option>สำเร็จ</option>
-                <option>รอการยืนยัน</option>
-                <option>กำลังผลิต</option>
-                <option>ยกเลิก</option>
+            <select class="text-black" id="statusSelect<%= order.order_id %>">
+                <option value="รอยืนยัน" <%= order.status === 'รอยืนยัน' ? 'selected' : '' %>>รอยืนยัน</option>
+                <option value="กำลังผลิต" <%= order.status === 'กำลังผลิต' ? 'selected' : '' %>>กำลังผลิต</option>
+                <option value="สำเร็จ" <%= order.status === 'สำเร็จ' ? 'selected' : '' %>>สำเร็จ</option>
+                <option value="ยกเลิก" <%= order.status === 'ยกเลิก' ? 'selected' : '' %>>ยกเลิก</option>
             </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
-            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
+            <!-- ปุ่มยืนยันที่จะแนบค่า status ที่เลือก -->
+            <a class="bg-green-500 p-3 text-white" href="#" onclick="changeStatus(<%= order.order_id %>)">ยืนยัน</a>
+            <a class="bg-red-500 text-white ms-5 p-3" href="/deleteOrder?id=<%= order.order_id %>">ลบข้อมูล</a>
         </div>
-        <div class="underlinedes col-span-2">
-            <h3>001</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>1/3/2025</h3>
-        </div>
-        <div class="underlinedes col-span-1">
-            <h3 class="bg-yellow-600">รอการยืนยัน</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>100฿</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>400/108 sadasd xacxzxczcss</h3>
-        </div>
-        <div class="underlinedes col-span-3">
-            <select class="text-black">
-                <option>สำเร็จ</option>
-                <option>รอการยืนยัน</option>
-                <option>กำลังผลิต</option>
-                <option>ยกเลิก</option>
-            </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
-            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>001</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>1/3/2025</h3>
-        </div>
-        <div class="underlinedes col-span-1">
-            <h3 class="bg-blue-700">กำลังผลิต</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>100฿</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>400/108 sadasd xacxzxczcss</h3>
-        </div>
-        <div class="underlinedes col-span-3">
-            <select class="text-black">
-                <option>สำเร็จ</option>
-                <option>รอการยืนยัน</option>
-                <option>กำลังผลิต</option>
-                <option>ยกเลิก</option>
-            </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
-            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>001</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>1/3/2025</h3>
-        </div>
-        <div class="underlinedes col-span-1">
-            <h3 class="bg-green-700">สำเร็จ</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>100฿</h3>
-        </div>
-        <div class="underlinedes col-span-2">
-            <h3>400/108 sadasd xacxzxczcss</h3>
-        </div>
-        <div class="underlinedes col-span-3">
-            <select class="text-black">
-                <option>สำเร็จ</option>
-                <option>รอการยืนยัน</option>
-                <option>กำลังผลิต</option>
-                <option>ยกเลิก</option>
-            </select>
-            <button class="bg-white text-black" style="height: 42px; width: 42px;">ยืนยัน</button>
-            <button class="bg-white text-black ms-5" style="height: 42px; width: 82px;">ลบข้อมูล</button>
-        </div>
+    <% }) %>
     </div>
+  <script>
+    function changeStatus(orderId) {
+        // ดึงค่าจาก select ที่เกี่ยวข้องกับ orderId
+        const status = document.getElementById(`statusSelect${orderId}`).value;
 
+        // สร้าง URL ที่จะส่งค่าของ order_id และ status ไป
+        const url = `/changeStatus?id=${orderId}&status=${status}`;
+
+        // เปลี่ยนไปที่ URL ที่สร้างขึ้น
+        window.location.href = url;
+    }
+  </script>
     
 </body>
 

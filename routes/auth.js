@@ -42,7 +42,7 @@ router.post('/sendcode', function(req, res){
         } else {
             req.session.email = email
             req.session.password = verifyCode
-            req.session.cookie.maxAge=3000000000
+            req.session.cookie.maxAge = 3600000;
             console.log('Send: ' + info.response)
             return res.redirect('/enterCode');
         }
@@ -83,6 +83,36 @@ router.post('/enterCode', async function (req, res) {
         console.error("Database error:", err.message);
         return res.status(500).json({ error: "Database error" });
     }
+});
+
+router.post('/user', async (req, res) => {
+    const db = await openDb();
+    const address = req.body.addressInput;
+    const userSession = req.session.userId;
+
+    console.log("Address:", address);
+    console.log("User Session:", userSession);
+
+    const sql = "UPDATE Users SET address = ? WHERE user_id = ?;";
+    
+    await db.run(sql, [address, userSession], function (err) {
+        
+        if (err) {
+            console.error("Database error:", err.message);
+            return res.status(500).send("Error updating address.");
+        }
+        
+        console.log(`A row has been updated for user_id ${userSession}`);
+
+        // ✅ ปิด database connection เพื่อป้องกันการโหลดค้าง
+        db.close((closeErr) => {
+            if (closeErr) {
+                console.error("Error closing database:", closeErr.message);
+            }
+             // Redirect หลังจากทุกอย่างเสร็จสมบูรณ์
+        });
+    });
+    res.redirect('/user'); 
 });
 
 router.get('/logout', (req, res) => {
