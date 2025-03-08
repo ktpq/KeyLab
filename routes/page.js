@@ -11,22 +11,17 @@ async function openDb() {
     });
 }
 
-// router.get('/', function(req, res){
-//     res.render('app');
-// });
-
 router.get('/', async (req, res) => {
     try {
         const db = await openDb();
-        const products = await db.all("SELECT * FROM products ORDER BY RANDOM() LIMIT 4"); // Fetch all products
+        const products = await db.all("SELECT * FROM products ORDER BY RANDOM() LIMIT 4");
 
-        // Shuffle the array using Fisher-Yates algorithm
         for (let i = products.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [products[i], products[j]] = [products[j], products[i]];
         }
 
-        res.render('app', { products }); // Send shuffled products to frontend
+        res.render('app', { products });
     } catch (error) {
         console.error(error);
         res.status(500).send("Database Error");
@@ -55,10 +50,6 @@ router.get('/enterCode', function(req, res){
 router.get('/buy', function (req, res) {
     res.render('buy');
 });
-
-// router.get('/products', function(req,res){
-//     res.render('products')
-// })
 
 router.get('/products', async (req, res) => {
     try {
@@ -141,7 +132,7 @@ router.get('/kitsproduct', async (req, res) => {
 });
 
 router.get('/buy/:id', async (req, res) => {
-    const productId = req.params.id; // Get ID from URL parameter
+    const productId = req.params.id;
 
     try {
         const db = await openDb();
@@ -159,17 +150,159 @@ router.get('/buy/:id', async (req, res) => {
 
 router.get('/order', function (req, res) {
     res.render('order')
-})
+});
 router.get('/manuser', function (req, res) {
     res.render('manuser')
-})
+});
 router.get('/payment', function (req, res) {
     res.render('payment')
-})
+});
 
 router.get('/cart', function (req, res) {
     res.render('cart')
-})
+});
+
+// router.get('/customize', async (req, res) => {
+//     try {
+//         const db = await openDb();
+        
+//         const layouts = await db.all('SELECT * FROM layouts');
+        
+//         const switches = await db.all(`
+//             SELECT switches.*, products.name 
+//             FROM switches 
+//             JOIN products ON switches.prod_id = products.prod_id
+//         `);
+        
+//         const keycaps = await db.all(`
+//             SELECT keycaps.*, products.name 
+//             FROM keycaps 
+//             JOIN products ON keycaps.prod_id = products.prod_id
+//         `);
+
+//         res.render('customize', { layouts, switches, keycaps });
+
+//     } catch (err) {
+//         console.error("Database Error:", err);
+//         res.status(500).send("Internal Server Error");
+//     }
+// });
+
+
+// router.get("/getParts", async (req, res) => {
+//     const layoutId = req.query.layoutId;
+    
+//     if (!layoutId) {
+//         return res.json({ cases: [], pcbs: [], plates: [] });
+//     }
+
+//     try {
+//         const db = await openDb();
+        
+//         const cases = await db.all(`
+//             SELECT Cases.*, products.name 
+//             FROM Cases 
+//             JOIN products ON Cases.prod_id = products.prod_id 
+//             WHERE Cases.layout_id = ?`, 
+//             [layoutId]
+//         );
+
+//         const pcbs = await db.all(`
+//             SELECT PCB.*, products.name 
+//             FROM PCB 
+//             JOIN products ON PCB.prod_id = products.prod_id 
+//             WHERE PCB.layout_id = ?`, 
+//             [layoutId]
+//         );
+
+//         const plates = await db.all(`
+//             SELECT Plates.*, products.name 
+//             FROM Plates 
+//             JOIN products ON Plates.prod_id = products.prod_id 
+//             WHERE Plates.layout_id = ?`, 
+//             [layoutId]
+//         );
+
+//         console.log(`Layout ID: ${layoutId}`);
+//         console.log("Cases:", cases);
+//         console.log("PCBs:", pcbs);
+//         console.log("Plates:", plates);
+
+//         res.json({ cases, pcbs, plates });
+
+//     } catch (error) {
+//         console.error("Database error:", error);
+//         res.status(500).json({ error: "Internal Server Error" });
+//     }
+// });
+
+router.get('/customize', async (req, res) => {
+    try {
+        const db = await openDb();
+        
+        const layouts = await db.all('SELECT * FROM layouts');
+        
+        const switches = await db.all(`
+            SELECT switches.*, products.name, products.img1
+            FROM switches 
+            JOIN products ON switches.prod_id = products.prod_id
+        `);
+        
+        const keycaps = await db.all(`
+            SELECT keycaps.*, products.name, products.img1
+            FROM keycaps 
+            JOIN products ON keycaps.prod_id = products.prod_id
+        `);
+
+        res.render('customize', { layouts, switches, keycaps });
+
+    } catch (err) {
+        console.error("Database Error:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+router.get("/getParts", async (req, res) => {
+    const layoutId = req.query.layoutId;
+    
+    if (!layoutId) {
+        return res.json({ cases: [], pcbs: [], plates: [] });
+    }
+
+    try {
+        const db = await openDb();
+        
+        const cases = await db.all(`
+            SELECT Cases.*, products.name, products.img1 
+            FROM Cases 
+            JOIN products ON Cases.prod_id = products.prod_id 
+            WHERE Cases.layout_id = ?`, 
+            [layoutId]
+        );
+
+        const pcbs = await db.all(`
+            SELECT PCB.*, products.name, products.img1 
+            FROM PCB 
+            JOIN products ON PCB.prod_id = products.prod_id 
+            WHERE PCB.layout_id = ?`, 
+            [layoutId]
+        );
+
+        const plates = await db.all(`
+            SELECT Plates.*, products.name, products.img1 
+            FROM Plates 
+            JOIN products ON Plates.prod_id = products.prod_id 
+            WHERE Plates.layout_id = ?`, 
+            [layoutId]
+        );
+
+        res.json({ cases, pcbs, plates });
+
+    } catch (error) {
+        console.error("Database error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 
 router.get('/user', async function (req, res) {

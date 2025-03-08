@@ -1,0 +1,309 @@
+<%- include('partials/headHtml') %>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+    <body class="bg-[#1b1b1b]">
+        <%- include('partials/nav.ejs') %>
+
+            <div class="container mx-auto p-6 max-w-4xl bg-white shadow-lg rounded-lg mt-8 mb-8">
+                <h1 class="text-3xl font-bold mb-6 text-center border-b pb-4">ปรับแต่งตามที่ต้องการ</h1>
+
+                <!-- Layout Selection -->
+                <div class="mb-8 bg-gray-50 p-4 rounded-lg shadow">
+                    <label class="block text-xl font-semibold mb-2 text-gray-800">เลือกเลย์เอาท์:</label>
+                    <select id="layoutDropdown" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300" onchange="fetchParts()">
+                        <option value="">กรุณาเลือกเลย์เอาท์</option>
+                        <% layouts.forEach(layout=> { %>
+                            <option value="<%= layout.layout_id %>">
+                                <%= layout.name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Case Selection -->
+                    <div id="case-options" class="bg-gray-50 p-4 rounded-lg shadow">
+                        <label class="block text-xl font-semibold mb-3 text-gray-800">เคส</label>
+                        <div class="flex items-center">
+                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
+                                <img id="caseContainer-img" src="" class="max-w-full max-h-full object-contain hidden">
+                                <div id="caseContainer-placeholder" class="text-gray-300">
+                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <select id="caseContainer" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
+                                <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- PCB Selection -->
+                    <div id="pcb-options" class="bg-gray-50 p-4 rounded-lg shadow">
+                        <label class="block text-xl font-semibold mb-3 text-gray-800">PCB</label>
+                        <div class="flex items-center">
+                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
+                                <img id="pcbContainer-img" src="" class="max-w-full max-h-full object-contain hidden">
+                                <div id="pcbContainer-placeholder" class="text-gray-300">
+                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <select id="pcbContainer" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
+                                <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Plate Selection -->
+                    <div id="plate-options" class="bg-gray-50 p-4 rounded-lg shadow">
+                        <label class="block text-xl font-semibold mb-3 text-gray-800">เพลท</label>
+                        <div class="flex items-center">
+                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
+                                <img id="plateContainer-img" src="" class="max-w-full max-h-full object-contain hidden">
+                                <div id="plateContainer-placeholder" class="text-gray-300">
+                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <select id="plateContainer" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
+                                <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Switch Selection -->
+                    <div id="switch-options" class="bg-gray-50 p-4 rounded-lg shadow">
+                        <label class="block text-xl font-semibold mb-3 text-gray-800">สวิตช์</label>
+                        <div class="flex items-center">
+                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
+                                <img id="switchDropdown-img" src="" class="max-w-full max-h-full object-contain hidden">
+                                <div id="switchDropdown-placeholder" class="text-gray-300">
+                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <select id="switchDropdown" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300"
+                                onchange="updateSelectedImage('switchDropdown')">
+                                <option value="">เลือกสวิตช์</option>
+                                <% switches.forEach(item=> { %>
+                                    <option value="<%= item.prod_id %>" data-img1="<%= item.img1 %>">
+                                        <%= item.name %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Keycap Selection -->
+                    <div id="keycap-options" class="bg-gray-50 p-4 rounded-lg shadow">
+                        <label class="block text-xl font-semibold mb-3 text-gray-800">คีย์แคป</label>
+                        <div class="flex items-center">
+                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
+                                <img id="keycapDropdown-img" src="" class="max-w-full max-h-full object-contain hidden">
+                                <div id="keycapDropdown-placeholder" class="text-gray-300">
+                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <select id="keycapDropdown" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300"
+                                onchange="updateSelectedImage('keycapDropdown')">
+                                <option value="">เลือกคีย์แคป</option>
+                                <% keycaps.forEach(item=> { %>
+                                    <option value="<%= item.prod_id %>" data-img1="<%= item.img1 %>">
+                                        <%= item.name %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview and Submit Section -->
+                <div class="mt-8 text-center">
+                    <button id="wishlistBtn" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-lg mr-4 transition duration-300 transform hover:scale-105">
+                        เพิ่มลงรายการโปรด
+                    </button>
+                    <button id="addToCartBtn" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                        เพิ่มลงในตะกร้า
+                    </button>
+                </div>
+
+                <!-- Selected Components Summary -->
+                <div class="mt-8 bg-gray-50 p-4 rounded-lg shadow">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">รายการที่เลือก</h2>
+                    <div id="selectedSummary" class="grid grid-cols-2 gap-4">
+                        <div>เลย์เอาท์: <span id="selectedLayout" class="font-medium">-</span></div>
+                        <div>เคส: <span id="selectedCase" class="font-medium">-</span></div>
+                        <div>PCB: <span id="selectedPCB" class="font-medium">-</span></div>
+                        <div>เพลท: <span id="selectedPlate" class="font-medium">-</span></div>
+                        <div>สวิตช์: <span id="selectedSwitch" class="font-medium">-</span></div>
+                        <div>คีย์แคป: <span id="selectedKeycap" class="font-medium">-</span></div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <script>
+        function fetchParts() {
+            const layoutId = document.getElementById("layoutDropdown").value;
+            const layoutSelect = document.getElementById("layoutDropdown");
+            const selectedLayoutName = layoutId ? layoutSelect.options[layoutSelect.selectedIndex].text : "-";
+            document.getElementById("selectedLayout").textContent = selectedLayoutName;
+
+            console.log(`fetchParts() called with layoutId: ${layoutId}`);
+
+            if (!layoutId) {
+                document.getElementById("caseContainer").innerHTML = "<option value=''>กรุณาเลือกเลย์เอาท์ก่อน</option>";
+                document.getElementById("pcbContainer").innerHTML = "<option value=''>กรุณาเลือกเลย์เอาท์ก่อน</option>";
+                document.getElementById("plateContainer").innerHTML = "<option value=''>กรุณาเลือกเลย์เอาท์ก่อน</option>";
+                
+                document.getElementById("selectedCase").textContent = "-";
+                document.getElementById("selectedPCB").textContent = "-";
+                document.getElementById("selectedPlate").textContent = "-";
+                return;
+            }
+
+            fetch(`/getParts?layoutId=${layoutId}`)
+                .then(response => response.json())
+                .then(data => {
+                    updateOptions("caseContainer", data.cases);
+                    updateOptions("pcbContainer", data.pcbs);
+                    updateOptions("plateContainer", data.plates);
+                })
+                .catch(error => console.error("Error fetching parts:", error));
+        }
+
+        function updateOptions(containerId, items) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+
+            if (!items || items.length === 0) {
+                container.innerHTML = "<option value=''>ไม่มีตัวเลือก</option>";
+                return;
+            }
+
+            const defaultOption = document.createElement("option");
+            defaultOption.textContent = "เลือกตัวเลือก";
+            defaultOption.value = "";
+            container.appendChild(defaultOption);
+
+            items.forEach(item => {
+                const option = document.createElement("option");
+                option.textContent = item.name;
+                option.value = item.id;
+                option.setAttribute("data-img1", item.img1);
+                container.appendChild(option);
+            });
+
+            container.addEventListener("change", function () {
+                updateSelectedImage(containerId);
+                
+                // Update summary element based on the container ID
+                const selectedText = this.options[this.selectedIndex].text;
+                if (containerId === "caseContainer") {
+                    document.getElementById("selectedCase").textContent = selectedText !== "เลือกตัวเลือก" ? selectedText : "-";
+                } else if (containerId === "pcbContainer") {
+                    document.getElementById("selectedPCB").textContent = selectedText !== "เลือกตัวเลือก" ? selectedText : "-";
+                } else if (containerId === "plateContainer") {
+                    document.getElementById("selectedPlate").textContent = selectedText !== "เลือกตัวเลือก" ? selectedText : "-";
+                }
+            });
+        }
+
+        function updateSelectedImage(containerId) {
+            const select = document.getElementById(containerId);
+            const img1 = select.options[select.selectedIndex].getAttribute("data-img1");
+            const imageElement = document.getElementById(`${containerId}-img`);
+            const placeholderElement = document.getElementById(`${containerId}-placeholder`);
+
+            if (img1) {
+                imageElement.src = img1;
+                imageElement.classList.remove("hidden");
+                placeholderElement.classList.add("hidden");
+            } else {
+                imageElement.classList.add("hidden");
+                placeholderElement.classList.remove("hidden");
+            }
+
+            // Update summary for switches and keycaps
+            if (containerId === "switchDropdown" || containerId === "keycapDropdown") {
+                const selectedText = select.options[select.selectedIndex].text;
+                const summaryElementId = containerId === "switchDropdown" ? "selectedSwitch" : "selectedKeycap";
+                document.getElementById(summaryElementId).textContent = selectedText !== "เลือกตัวเลือก" && selectedText !== "เลือกสวิตช์" && selectedText !== "เลือกคีย์แคป" ? selectedText : "-";
+            }
+        }
+
+        // Initialize event listeners for all dropdowns
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for all dropdowns
+            const dropdowns = ['caseContainer', 'pcbContainer', 'plateContainer', 'switchDropdown', 'keycapDropdown'];
+            
+            dropdowns.forEach(function(dropdownId) {
+                const dropdown = document.getElementById(dropdownId);
+                if (dropdown) {
+                    dropdown.addEventListener('change', function() {
+                        updateSelectedImage(dropdownId);
+                        
+                        // Update summary based on dropdown type
+                        const selectedText = this.options[this.selectedIndex].text;
+                        let summaryId;
+                        
+                        if (dropdownId === 'caseContainer') {
+                            summaryId = 'selectedCase';
+                        } else if (dropdownId === 'pcbContainer') {
+                            summaryId = 'selectedPCB';
+                        } else if (dropdownId === 'plateContainer') {
+                            summaryId = 'selectedPlate';
+                        } else if (dropdownId === 'switchDropdown') {
+                            summaryId = 'selectedSwitch';
+                        } else if (dropdownId === 'keycapDropdown') {
+                            summaryId = 'selectedKeycap';
+                        }
+                        
+                        if (summaryId) {
+                            const isDefaultOption = selectedText === "เลือกตัวเลือก" || 
+                                                selectedText === "เลือกสวิตช์" || 
+                                                selectedText === "เลือกคีย์แคป";
+                            document.getElementById(summaryId).textContent = !isDefaultOption ? selectedText : "-";
+                        }
+                    });
+                }
+            });
+
+            // Add to cart button functionality
+            document.getElementById('addToCartBtn').addEventListener('click', function() {
+                const layout = document.getElementById('layoutDropdown').value;
+                const caseId = document.getElementById('caseContainer').value;
+                const pcbId = document.getElementById('pcbContainer').value;
+                const plateId = document.getElementById('plateContainer').value;
+                const switchId = document.getElementById('switchDropdown').value;
+                const keycapId = document.getElementById('keycapDropdown').value;
+
+                if (!layout || !caseId || !pcbId || !plateId || !switchId || !keycapId) {
+                    alert('กรุณาเลือกทุกส่วนประกอบก่อนเพิ่มลงในตะกร้า');
+                    return;
+                }
+
+                // Here you would add logic to add the selected components to the cart
+                console.log('Adding to cart:', {layout, caseId, pcbId, plateId, switchId, keycapId});
+                // You would typically send this data to your server or store in localStorage
+                alert('เพิ่มลงในตะกร้าเรียบร้อยแล้ว!');
+            });
+        });
+    </script>
+    <%- include('partials/footHtml') %>
