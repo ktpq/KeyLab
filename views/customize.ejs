@@ -10,7 +10,9 @@
                 <!-- Layout Selection -->
                 <div class="mb-8 bg-gray-50 p-4 rounded-lg shadow">
                     <label class="block text-xl font-semibold mb-2 text-gray-800">เลือกเลย์เอาท์:</label>
-                    <select id="layoutDropdown" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300" onchange="fetchParts()">
+                    <select id="layoutDropdown"
+                        class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300"
+                        onchange="fetchParts()">
                         <option value="">กรุณาเลือกเลย์เอาท์</option>
                         <% layouts.forEach(layout=> { %>
                             <option value="<%= layout.layout_id %>">
@@ -20,128 +22,139 @@
                     </select>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Case Selection -->
-                    <div id="case-options" class="bg-gray-50 p-4 rounded-lg shadow">
-                        <label class="block text-xl font-semibold mb-3 text-gray-800">เคส</label>
-                        <div class="flex items-center">
-                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
-                                <img id="caseContainer-img" src="" class="max-w-full max-h-full object-contain hidden">
-                                <div id="caseContainer-placeholder" class="text-gray-300">
-                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                        <polyline points="21 15 16 10 5 21"></polyline>
-                                    </svg>
+                <!-- Component Selection Section - Horizontal Layout -->
+                <div class="space-y-8">
+                    <!-- Case, PCB, Plate Selection Row -->
+                    <div class="bg-gray-50 p-4 rounded-lg shadow">
+                        <div class="flex flex-wrap -mx-2">
+                            <!-- Case Selection -->
+                            <div id="case-options" class="px-2 w-full md:w-2/5 mb-4 md:mb-0">
+                                <label class="block text-xl font-semibold mb-3 text-gray-800">เคส</label>
+                                <div class="bg-white rounded-lg p-2 border mb-2 h-40 flex items-center justify-center">
+                                    <img id="caseContainer-img" src=""
+                                        class="max-w-full max-h-full object-contain hidden">
+                                    <div id="caseContainer-placeholder" class="text-gray-300">
+                                        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                    </div>
                                 </div>
+                                <select id="caseContainer"
+                                    class="p-2 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
+                                    <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
+                                </select>
                             </div>
-                            <select id="caseContainer" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
-                                <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
-                            </select>
+
+                            <!-- PCB Selection -->
+                            <div id="pcb-options" class="px-2 w-full md:w-2/5 mb-4 md:mb-0">
+                                <label class="block text-xl font-semibold mb-3 text-gray-800">PCB</label>
+                                <div class="bg-white rounded-lg p-2 border mb-2 h-40 flex items-center justify-center">
+                                    <img id="pcbContainer-img" src=""
+                                        class="max-w-full max-h-full object-contain hidden">
+                                    <div id="pcbContainer-placeholder" class="text-gray-300">
+                                        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <select id="pcbContainer"
+                                    class="p-2 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
+                                    <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
+                                </select>
+                            </div>
+
+                            <!-- Plate Selection -->
+                            <div id="plate-options" class="px-2 w-full md:w-2/5">
+                                <label class="block text-xl font-semibold mb-3 text-gray-800">เพลท</label>
+                                <div class="bg-white rounded-lg p-2 border mb-2 h-40 flex items-center justify-center">
+                                    <img id="plateContainer-img" src=""
+                                        class="max-w-full max-h-full object-contain hidden">
+                                    <div id="plateContainer-placeholder" class="text-gray-300">
+                                        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <select id="plateContainer"
+                                    class="p-2 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
+                                    <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- PCB Selection -->
-                    <div id="pcb-options" class="bg-gray-50 p-4 rounded-lg shadow">
-                        <label class="block text-xl font-semibold mb-3 text-gray-800">PCB</label>
-                        <div class="flex items-center">
-                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
-                                <img id="pcbContainer-img" src="" class="max-w-full max-h-full object-contain hidden">
-                                <div id="pcbContainer-placeholder" class="text-gray-300">
-                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                        <polyline points="21 15 16 10 5 21"></polyline>
-                                    </svg>
+                    <!-- Switch and Keycap Selection Row -->
+                    <div class="bg-gray-50 p-4 rounded-lg shadow">
+                        <div class="flex flex-wrap -mx-2">
+                            <!-- Switch Selection -->
+                            <div id="switch-options" class="px-2 w-full md:w-2/5 mb-4 md:mb-0">
+                                <label class="block text-xl font-semibold mb-3 text-gray-800">สวิตช์</label>
+                                <div class="bg-white rounded-lg p-2 border mb-2 h-40 flex items-center justify-center">
+                                    <img id="switchDropdown-img" src=""
+                                        class="max-w-full max-h-full object-contain hidden">
+                                    <div id="switchDropdown-placeholder" class="text-gray-300">
+                                        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                    </div>
                                 </div>
+                                <select id="switchDropdown"
+                                    class="p-2 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300"
+                                    onchange="updateSelectedImage('switchDropdown')">
+                                    <option value="">เลือกสวิตช์</option>
+                                    <% switches.forEach(item=> { %>
+                                        <option value="<%= item.prod_id %>" data-img1="<%= item.img1 %>">
+                                            <%= item.name %>
+                                        </option>
+                                        <% }) %>
+                                </select>
                             </div>
-                            <select id="pcbContainer" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
-                                <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
-                            </select>
+
+                            <!-- Keycap Selection -->
+                            <div id="keycap-options" class="px-2 w-full md:w-2/5">
+                                <label class="block text-xl font-semibold mb-3 text-gray-800">คีย์แคป</label>
+                                <div class="bg-white rounded-lg p-2 border mb-2 h-40 flex items-center justify-center">
+                                    <img id="keycapDropdown-img" src=""
+                                        class="max-w-full max-h-full object-contain hidden">
+                                    <div id="keycapDropdown-placeholder" class="text-gray-300">
+                                        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <select id="keycapDropdown"
+                                    class="p-2 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300"
+                                    onchange="updateSelectedImage('keycapDropdown')">
+                                    <option value="">เลือกคีย์แคป</option>
+                                    <% keycaps.forEach(item=> { %>
+                                        <option value="<%= item.prod_id %>" data-img1="<%= item.img1 %>">
+                                            <%= item.name %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Plate Selection -->
-                    <div id="plate-options" class="bg-gray-50 p-4 rounded-lg shadow">
-                        <label class="block text-xl font-semibold mb-3 text-gray-800">เพลท</label>
-                        <div class="flex items-center">
-                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
-                                <img id="plateContainer-img" src="" class="max-w-full max-h-full object-contain hidden">
-                                <div id="plateContainer-placeholder" class="text-gray-300">
-                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                        <polyline points="21 15 16 10 5 21"></polyline>
-                                    </svg>
-                                </div>
-                            </div>
-                            <select id="plateContainer" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300">
-                                <option value="">กรุณาเลือกเลย์เอาท์ก่อน</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Switch Selection -->
-                    <div id="switch-options" class="bg-gray-50 p-4 rounded-lg shadow">
-                        <label class="block text-xl font-semibold mb-3 text-gray-800">สวิตช์</label>
-                        <div class="flex items-center">
-                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
-                                <img id="switchDropdown-img" src="" class="max-w-full max-h-full object-contain hidden">
-                                <div id="switchDropdown-placeholder" class="text-gray-300">
-                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                        <polyline points="21 15 16 10 5 21"></polyline>
-                                    </svg>
-                                </div>
-                            </div>
-                            <select id="switchDropdown" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300"
-                                onchange="updateSelectedImage('switchDropdown')">
-                                <option value="">เลือกสวิตช์</option>
-                                <% switches.forEach(item=> { %>
-                                    <option value="<%= item.prod_id %>" data-img1="<%= item.img1 %>">
-                                        <%= item.name %>
-                                    </option>
-                                    <% }) %>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Keycap Selection -->
-                    <div id="keycap-options" class="bg-gray-50 p-4 rounded-lg shadow">
-                        <label class="block text-xl font-semibold mb-3 text-gray-800">คีย์แคป</label>
-                        <div class="flex items-center">
-                            <div class="mr-4 bg-white rounded-lg p-2 border w-60 h-60 flex items-center justify-center">
-                                <img id="keycapDropdown-img" src="" class="max-w-full max-h-full object-contain hidden">
-                                <div id="keycapDropdown-placeholder" class="text-gray-300">
-                                    <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                        <polyline points="21 15 16 10 5 21"></polyline>
-                                    </svg>
-                                </div>
-                            </div>
-                            <select id="keycapDropdown" class="p-3 border rounded-lg w-full bg-white focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-300"
-                                onchange="updateSelectedImage('keycapDropdown')">
-                                <option value="">เลือกคีย์แคป</option>
-                                <% keycaps.forEach(item=> { %>
-                                    <option value="<%= item.prod_id %>" data-img1="<%= item.img1 %>">
-                                        <%= item.name %>
-                                    </option>
-                                    <% }) %>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Preview and Submit Section -->
-                <div class="mt-8 text-center">
-                    <button id="wishlistBtn" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-lg mr-4 transition duration-300 transform hover:scale-105">
-                        เพิ่มลงรายการโปรด
-                    </button>
-                    <button id="addToCartBtn" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
-                        เพิ่มลงในตะกร้า
-                    </button>
                 </div>
 
                 <!-- Selected Components Summary -->
@@ -155,6 +168,18 @@
                         <div>สวิตช์: <span id="selectedSwitch" class="font-medium">-</span></div>
                         <div>คีย์แคป: <span id="selectedKeycap" class="font-medium">-</span></div>
                     </div>
+                </div>
+
+                <!-- Preview and Submit Section -->
+                <div class="mt-8 text-center">
+                    <button id="wishlistBtn"
+                        class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-lg mr-4 transition duration-300 transform hover:scale-105">
+                        เพิ่มลงรายการโปรด
+                    </button>
+                    <button id="addToCartBtn"
+                        class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                        เพิ่มลงในตะกร้า
+                    </button>
                 </div>
             </div>
     </body>
@@ -171,7 +196,7 @@
                 document.getElementById("caseContainer").innerHTML = "<option value=''>กรุณาเลือกเลย์เอาท์ก่อน</option>";
                 document.getElementById("pcbContainer").innerHTML = "<option value=''>กรุณาเลือกเลย์เอาท์ก่อน</option>";
                 document.getElementById("plateContainer").innerHTML = "<option value=''>กรุณาเลือกเลย์เอาท์ก่อน</option>";
-                
+
                 document.getElementById("selectedCase").textContent = "-";
                 document.getElementById("selectedPCB").textContent = "-";
                 document.getElementById("selectedPlate").textContent = "-";
@@ -212,7 +237,7 @@
 
             container.addEventListener("change", function () {
                 updateSelectedImage(containerId);
-                
+
                 // Update summary element based on the container ID
                 const selectedText = this.options[this.selectedIndex].text;
                 if (containerId === "caseContainer") {
@@ -249,20 +274,20 @@
         }
 
         // Initialize event listeners for all dropdowns
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Add event listeners for all dropdowns
             const dropdowns = ['caseContainer', 'pcbContainer', 'plateContainer', 'switchDropdown', 'keycapDropdown'];
-            
-            dropdowns.forEach(function(dropdownId) {
+
+            dropdowns.forEach(function (dropdownId) {
                 const dropdown = document.getElementById(dropdownId);
                 if (dropdown) {
-                    dropdown.addEventListener('change', function() {
+                    dropdown.addEventListener('change', function () {
                         updateSelectedImage(dropdownId);
-                        
+
                         // Update summary based on dropdown type
                         const selectedText = this.options[this.selectedIndex].text;
                         let summaryId;
-                        
+
                         if (dropdownId === 'caseContainer') {
                             summaryId = 'selectedCase';
                         } else if (dropdownId === 'pcbContainer') {
@@ -274,11 +299,11 @@
                         } else if (dropdownId === 'keycapDropdown') {
                             summaryId = 'selectedKeycap';
                         }
-                        
+
                         if (summaryId) {
-                            const isDefaultOption = selectedText === "เลือกตัวเลือก" || 
-                                                selectedText === "เลือกสวิตช์" || 
-                                                selectedText === "เลือกคีย์แคป";
+                            const isDefaultOption = selectedText === "เลือกตัวเลือก" ||
+                                selectedText === "เลือกสวิตช์" ||
+                                selectedText === "เลือกคีย์แคป";
                             document.getElementById(summaryId).textContent = !isDefaultOption ? selectedText : "-";
                         }
                     });
@@ -286,7 +311,7 @@
             });
 
             // Add to cart button functionality
-            document.getElementById('addToCartBtn').addEventListener('click', function() {
+            document.getElementById('addToCartBtn').addEventListener('click', function () {
                 const layout = document.getElementById('layoutDropdown').value;
                 const caseId = document.getElementById('caseContainer').value;
                 const pcbId = document.getElementById('pcbContainer').value;
@@ -300,7 +325,7 @@
                 }
 
                 // Here you would add logic to add the selected components to the cart
-                console.log('Adding to cart:', {layout, caseId, pcbId, plateId, switchId, keycapId});
+                console.log('Adding to cart:', { layout, caseId, pcbId, plateId, switchId, keycapId });
                 // You would typically send this data to your server or store in localStorage
                 alert('เพิ่มลงในตะกร้าเรียบร้อยแล้ว!');
             });
