@@ -35,7 +35,19 @@ router.get('/cartCustom', async (req, res) =>{
 
 router.get('/wishlist', async (req,res) =>{
     if (req.session.userId){
-        res.render('wishlist')
+        const dataString = req.query.data;
+        const data = JSON.parse(decodeURIComponent(dataString));
+        console.log(data)
+        req.session.wishlist = data;
+        res.redirect('/customize')
     }
 })
+
+router.get('/wishlistPage', async (req,res) =>{
+    if (req.session.userId){
+        res.render('wishlist', {wishlist: req.session.wishlist})
+    }
+})
+
+
 module.exports = router;

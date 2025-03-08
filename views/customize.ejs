@@ -369,6 +369,11 @@
                 
                 // Logic to add to wishlist
                 console.log('Adding to wishlist:', { layout, caseId, pcbId, plateId, switchId, keycapId });
+                const data = [caseId, pcbId, plateId, switchId, keycapId];
+                const dataString = encodeURIComponent(JSON.stringify(data));
+
+                const url = `/wishlist?data=${dataString}`;
+                window.location.href = url;
                 
                 
             });

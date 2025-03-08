@@ -1,5 +1,5 @@
 <%- include('partials/headHtml')%>
-    <body class="bg-primary text-primary">
+    <body class="bg-third text-primary">
 
         
         
@@ -13,12 +13,12 @@
         <section class="text-white w-[75vw] mx-auto my-5 max-lg:w-[100vw]">
             <h1 class="text-5xl pl-4"> ข้อมูลส่วนตัว </h1>
 
-            <div class="ml-40 bg-third mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
+            <div class="ml-40 bg-primary mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg">
                 <h2 class="text-2xl mb-3"> อีเมล์ </h2>
                 <h2 class="text-xl"> <%= JSON.stringify(email.email) %></h2>
             </div>
             <form action="/user" method="POST">
-                <div class="ml-40 mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg bg-third">
+                <div class="ml-40 mt-5 py-5 px-5 max-lg:ml-4 max-md:ml-2 shadow-lg bg-primary">
                     <div class="flex justify-between items-center">
                         <h2 class="text-2xl mb-3"> ที่อยู่ </h2>
                         <button class="px-5 py-2 bg-third mb-3 hover:bg-red-300 duration-300" type="submit"> บันทึก </button>

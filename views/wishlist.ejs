@@ -1,17 +1,18 @@
 <%- include('partials/headHtml')%>
-<body class="bg-third">
+<body class="bg-third text-primary">
     <%- include('partials/navUser')%>
     <section class="min-h-[600px]">
+        <h1 class="text-white text-5xl mt-5 text-center"> รายการโปรด </h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
-            
+            <%= JSON.stringify(wishlist) %>
                     <div class="h-[420px] wrap3 inline-block">
                         <a href="/buy">
                             <div class="flex justify-center"
                                 style="position: absolute;width: 100%;height: 100%;">
-                                <img src="../public/image/keycap.jpg" class="img-back text-center">
-                                <img src="../public/image/keycap.jpg" class="img-front">
+                                <img src="/image/keycap.jpg" class="img-back text-center">
+                                <img src="/image/agar.jpg" class="img-front">
                             </div>
-                            <div class="flex items-end p-10 mt-10 text-start justify-center"
+                            <div class="flex items-end p-10  text-start justify-center"
                                 style="position: absolute;width: 100%;height: 100%;">
                                 <div class="mt-4 inline-block text-center">
                                     <p class="text-3xl text-brand">
@@ -24,6 +25,11 @@
                             </div>
                         </a>
                     </div>
+
+                    
+
+                    
+                    
                     
                         
         
