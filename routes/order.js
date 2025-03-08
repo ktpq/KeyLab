@@ -90,7 +90,73 @@ router.get('/changeStatus', async (req, res)=> {
     }
 })
 
+router.get('/customize', async (req, res) => {
+    try {
+        const db = await openDb();
+        
+        const layouts = await db.all('SELECT * FROM layouts');
+        
+        const switches = await db.all(`
+            SELECT switches.*, products.name, products.img1
+            FROM switches 
+            JOIN products ON switches.prod_id = products.prod_id
+        `);
+        
+        const keycaps = await db.all(`
+            SELECT keycaps.*, products.name, products.img1
+            FROM keycaps 
+            JOIN products ON keycaps.prod_id = products.prod_id
+        `);
 
+        res.render('customize', { layouts, switches, keycaps });
+
+    } catch (err) {
+        console.error("Database Error:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+router.get("/getParts", async (req, res) => {
+    const layoutId = req.query.layoutId;
+    
+    if (!layoutId) {
+        return res.json({ cases: [], pcbs: [], plates: [] });
+    }
+
+    try {
+        const db = await openDb();
+        
+        const cases = await db.all(`
+            SELECT Cases.*, products.name, products.img1 
+            FROM Cases 
+            JOIN products ON Cases.prod_id = products.prod_id 
+            WHERE Cases.layout_id = ?`, 
+            [layoutId]
+        );
+
+        const pcbs = await db.all(`
+            SELECT PCB.*, products.name, products.img1 
+            FROM PCB 
+            JOIN products ON PCB.prod_id = products.prod_id 
+            WHERE PCB.layout_id = ?`, 
+            [layoutId]
+        );
+
+        const plates = await db.all(`
+            SELECT Plates.*, products.name, products.img1 
+            FROM Plates 
+            JOIN products ON Plates.prod_id = products.prod_id 
+            WHERE Plates.layout_id = ?`, 
+            [layoutId]
+        );
+
+        res.json({ cases, pcbs, plates });
+
+    } catch (error) {
+        console.error("Database error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 
 

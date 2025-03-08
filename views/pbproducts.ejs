@@ -1,15 +1,15 @@
 <%- include('partials/headHtml')%>
 
-    <body class="bg-primary">
+    <body class="bg-third">
         <%- include('partials/nav')%>
             <section class="my-5">
-                <h1 class="text-5xl font-bold  text-center my-8 text-white">
+                <h1 class="text-5xl font-bold  text-center my-8 text-white text-primary">
                     คีย์บอร์ดพร้อมใช้งาน
                 </h1>
                 <%- include('partials/sort', { sortBy: sortBy }) %>
 
 
-                    <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                    <div class="grid grid-col-1 md:grid-cols-2 gap-7 text-center mt-10 my-10 text-white lg:grid-cols-4">
                         <% if (pre_built && pre_built.length> 0) { %>
                             <% pre_built.forEach(pre_builtItem=> { %>
                                 <div class="h-[420px] wrap3 inline-block">

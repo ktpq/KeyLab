@@ -1,9 +1,9 @@
 <%- include('partials/headHtml')%>
 
-    <body class="bg-primary">
+    <body class="bg-third">
         <%- include('partials/nav')%>
             <section class="my-5">
-                <h1 class="text-5xl font-bold  text-center my-8 text-white">
+                <h1 class="text-5xl font-bold  text-center my-8 text-white text-primary">
                     สินค้าของเรา
                 </h1>
                 <%- include('partials/sort', { sortBy: sortBy, isProductPage: true }) %>
@@ -14,7 +14,7 @@
 
                         <!-- Add Keycaps products here -->
 
-                        <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
                             <% if (keycaps && keycaps.length> 0) { %>
                                 <% keycaps.forEach(keycapsItem=> { %>
                                     <div class="h-[420px] wrap3 inline-block">
@@ -49,7 +49,7 @@
 
                         <!-- Add Switches products here -->
 
-                        <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
                             <% if (switches && switches.length> 0) { %>
                                 <% switches.forEach(switchItem=> { %>
                                     <div class="h-[420px] wrap3 inline-block">
@@ -84,7 +84,7 @@
 
                         <!-- Add Case products here -->
 
-                        <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
                             <% if (cases && cases.length> 0) { %>
                                 <% cases.forEach(casesItem=> { %>
                                     <div class="h-[420px] wrap3 inline-block">
@@ -119,7 +119,7 @@
 
                         <!-- Add PCB products here -->
 
-                        <div class="grid grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 text-center mt-10 my-10 text-white">
                             <% if (pcb && pcb.length> 0) { %>
                                 <% pcb.forEach(pcbItem=> { %>
                                     <div class="h-[420px] wrap3 inline-block">

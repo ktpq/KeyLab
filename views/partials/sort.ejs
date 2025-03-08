@@ -1,7 +1,7 @@
 <nav class="mx-auto flex justify-end">
     <% if (typeof isProductPage !== 'undefined' && isProductPage) { %>
         <select id="tabDropdown" onchange="switchTab(this.value)"
-            class="w-[11%] py-2 text-lg rounded-xl text-center mx-4 bg-primary border-none bg-white">
+            class="w-[11%] py-2 text-lg rounded-xl text-center mx-4 bg-primary border-none bg-white max-lg:w-[30%]">
             <option value="tab1">Keycaps</option>
             <option value="tab2">Switches</option>
             <option value="tab3">Case</option>
@@ -10,7 +10,7 @@
         </select>
     <% } %>
 
-    <select id="sortDropdown" class="w-[11%] py-2 text-lg rounded-xl text-center mx-4 bg-primary border-none bg-white"
+    <select id="sortDropdown" class="w-[11%] py-2 text-lg rounded-xl text-center mx-4 bg-primary border-none bg-white max-lg:w-[30%]"
         onchange="sortProducts()">
         <option value="">Sort by</option>
         <option value="lowtohigh" <%= (sortBy && sortBy ==='lowtohigh' ) ? 'selected' : '' %>>Price, low to high</option>

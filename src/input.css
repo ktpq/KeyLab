@@ -15,6 +15,10 @@
     .bg-secondary{
         background-color: #ffffff;
     }
+
+    .bg-third{
+        background-color: #0e0d0d;
+    }
     .wrap{
         position: relative;
         overflow: hidden;
