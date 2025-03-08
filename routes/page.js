@@ -14,15 +14,14 @@ async function openDb() {
 router.get('/', async (req, res) => {
     try {
         const db = await openDb();
-        const products = await db.all("SELECT * FROM products ORDER BY RANDOM() LIMIT 4"); // Fetch all products
+        const products = await db.all("SELECT * FROM products ORDER BY RANDOM() LIMIT 4");
 
-        // Shuffle the array using Fisher-Yates algorithm
         for (let i = products.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [products[i], products[j]] = [products[j], products[i]];
         }
 
-        res.render('app', { products }); // Send shuffled products to frontend
+        res.render('app', { products });
     } catch (error) {
         console.error(error);
         res.status(500).send("Database Error");
@@ -51,7 +50,6 @@ router.get('/enterCode', function(req, res){
 router.get('/buy', function (req, res) {
     res.render('buy');
 });
-
 
 router.get('/products', async (req, res) => {
     try {
@@ -134,7 +132,7 @@ router.get('/kitsproduct', async (req, res) => {
 });
 
 router.get('/buy/:id', async (req, res) => {
-    const productId = req.params.id; // Get ID from URL parameter
+    const productId = req.params.id;
 
     try {
         const db = await openDb();
