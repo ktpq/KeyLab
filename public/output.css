@@ -587,8 +587,14 @@
   .end-2 {
     inset-inline-end: calc(var(--spacing) * 2);
   }
+  .top-1 {
+    top: calc(var(--spacing) * 1);
+  }
   .top-1\/2 {
     top: calc(1/2 * 100%);
+  }
+  .left-1 {
+    left: calc(var(--spacing) * 1);
   }
   .left-1\/2 {
     left: calc(1/2 * 100%);
@@ -938,6 +944,12 @@
   .h-\[450px\] {
     height: 450px;
   }
+  .h-\[600\] {
+    height: 600;
+  }
+  .h-\[600px\] {
+    height: 600px;
+  }
   .h-\[900px\] {
     height: 900px;
   }
@@ -965,8 +977,14 @@
   .min-h-\[500px\] {
     min-height: 500px;
   }
+  .min-h-\[600px\] {
+    min-height: 600px;
+  }
   .min-h-screen {
     min-height: 100vh;
+  }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
