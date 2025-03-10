@@ -27,8 +27,8 @@ router.post('/sendcode', function(req, res){
     const option = {
         from: 'keylab123.official@gmail.com',
         to: `${email}`,
-        subject: 'Nodemailer Verification code TEST',
-        html: `TEST verification code : ${verifyCode}`
+        subject: 'Keylab verification code',
+        html: `<h1> Verification code is ${verifyCode} </h1>`
     }
 
     transporter.sendMail(option, (err,info) =>{
